@@ -64,10 +64,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminM.xaml.cs">
+      <DependentUpon>AdminM.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Auto.xaml.cs">
       <DependentUpon>Auto.xaml</DependentUpon>
     </Compile>
     <Compile Include="Base.cs" />
+    <Compile Include="CustomerM.xaml.cs">
+      <DependentUpon>CustomerM.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrameC.cs" />
     <Compile Include="Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -103,7 +110,15 @@
     <Compile Include="Table_Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="AdminM.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Auto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomerM.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

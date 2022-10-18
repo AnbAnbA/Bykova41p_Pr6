@@ -29,12 +29,12 @@ namespace Bykova41p_Pr6
 
         private void BTReg_Click(object sender, RoutedEventArgs e)
         {
-            frame.Navigate(new Reg());
+            frameM.Navigate(new Reg());
         }
 
         private void BTSign_Click(object sender, RoutedEventArgs e)
         {
-            frame.Navigate(new Auto());
+            frameM.Navigate(new Auto());
         }
 
         private void BTOut_Click(object sender, RoutedEventArgs e)

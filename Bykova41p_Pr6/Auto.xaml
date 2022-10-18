@@ -11,10 +11,10 @@
     <Grid>
         <StackPanel>
             <GroupBox Header="Введите логин">
-                <TextBox Name="TbLogun" Text="Логин"/>
+                <TextBox Name="TbLogin" Text="Логин"/>
             </GroupBox>
             <GroupBox Header="Введите пароль">
-                <PasswordBox Name="TbPasw" Password="Пароль"/>
+                <PasswordBox Name="PBPasw" Password="Пароль"/>
             </GroupBox>
             <Button Click="BTAuto_Click" Name="BTAuto">Авторизация</Button>
         </StackPanel> 
