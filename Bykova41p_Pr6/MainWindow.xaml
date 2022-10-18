@@ -8,11 +8,24 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="55"></RowDefinition>
-            <RowDefinition Height="15"></RowDefinition>
+            <RowDefinition Height="75"></RowDefinition>
+            <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
-        <Frame Name="frame" Grid.Row="2" NavigationUIVisibility="Hidden">
-            
-        </Frame>
+
+        <Grid Grid.Row="0">
+            <StackPanel>
+                <TextBlock Text="Магазин одежды и обуви"/>
+                <Image  Height="50" Width="100"/>
+            </StackPanel>
+            <Button x:Name="BTReg" Click="BTReg_Click" Content="Зарегистрироваться" Margin="656,22,28,24"></Button>
+            <Button x:Name="BTSign" Click="BTSign_Click" Content="Войти" Margin="504,22,180,24"></Button>
+            <Button x:Name="BTOut" Click="BTOut_Click" Content="Выйти" Margin="342,22,342,24"></Button>
+        </Grid>
+        <Grid Grid.Row="1">
+            <StackPanel>
+                <Frame x:Name="frame" NavigationUIVisibility="Hidden" Height="375" Width="791"/>
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </Window>

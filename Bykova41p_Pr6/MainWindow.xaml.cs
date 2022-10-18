@@ -24,7 +24,22 @@ namespace Bykova41p_Pr6
         {
             InitializeComponent();
             Base.ES = new Entities();
+            
+        }
+
+        private void BTReg_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BTSign_Click(object sender, RoutedEventArgs e)
+        {
             frame.Navigate(new Auto());
+        }
+
+        private void BTOut_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
