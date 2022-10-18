@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7825641fabcb4146920691909a323937" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Table_Characteristic" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Clothes" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Customer" Width="1.5" PointX="6" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Gender" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Meaning" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Purchase" Width="1.5" PointX="8.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Role" Width="1.5" PointX="3.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Shoes" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Users" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Table_Meaning_Table_Characteristic" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Clothes_Table_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Meaning_Table_Clothes" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Purchase_Table_Clothes" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Purchase_Table_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Shoes_Table_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Users_Table_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Meaning_Table_Shoes" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Purchase_Table_Shoes" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Users_Table_Role" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
