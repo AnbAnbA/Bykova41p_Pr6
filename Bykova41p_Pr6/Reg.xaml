@@ -1,0 +1,40 @@
+﻿<Page x:Class="Bykova41p_Pr6.Reg"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bykova41p_Pr6"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Reg">
+
+    <Grid>
+        <StackPanel>
+            <GroupBox Header="Введите фамилию">
+                <TextBox Name="TbSurn"/>
+            </GroupBox>
+            <GroupBox Header="Введите имя">
+                <TextBox Name="TbName"/>
+            </GroupBox>
+            <GroupBox Header="Введите отчество">
+                <TextBox Name="TbPatr"/>
+            </GroupBox>
+            <GroupBox Header="Введите дату рождения">
+                <DatePicker Name="DPBirth"></DatePicker>
+            </GroupBox>
+            <GroupBox Header="Выберите пол">
+                <ComboBox Name="CbGender"></ComboBox>
+            </GroupBox>
+            <GroupBox Header="Введите логин">
+                <TextBox Name="TbLog"/>
+            </GroupBox>
+            <GroupBox Header="Введите пароль">
+                <PasswordBox Name="TbPasw"/>
+            </GroupBox>
+            <GroupBox Header="Выберите роль">
+                <ComboBox Name="CbRole"></ComboBox>
+            </GroupBox>
+            <Button x:Name="BTregister" Click="BTregister_Click" Content="Зарегистрироваться" Height="38"/>
+        </StackPanel>
+    </Grid>
+</Page>
