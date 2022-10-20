@@ -36,11 +36,19 @@ namespace Bykova41p_Pr6
         private void BTregister_Click(object sender, RoutedEventArgs e)
         {
             int pasGegCode = TbPasw.Password.GetHashCode();
-            Table_Users UserRez = new Table_Users() { Name = TbName.Text, Surname = TbSurn.Text, Patronymic=TbPatr.Text,DateBirthday=(DateTime)DPBirth.SelectedDate, IdGender = CbGender.SelectedIndex + 1, Login = TbLog.Text, Pssword = pasGegCode, IdRole=CbRole.SelectedIndex+1 };
-            Base.ES.Table_Users.Add(UserRez);
-            Base.ES.SaveChanges();
-            MessageBox.Show("Вы зарегистрированы");
-
+            Table_Users User = Base.ES.Table_Users.FirstOrDefault(z => z.Login == TbLog.Text);
+            if (User == null)
+            {
+                Table_Users UserRez = new Table_Users() { Name = TbName.Text, Surname = TbSurn.Text, Patronymic = TbPatr.Text, DateBirthday = (DateTime)DPBirth.SelectedDate, IdGender = CbGender.SelectedIndex + 1, Login = TbLog.Text, Pssword = pasGegCode, IdRole = CbRole.SelectedIndex + 1 };
+                Base.ES.Table_Users.Add(UserRez);
+                Base.ES.SaveChanges();
+                MessageBox.Show("Вы зарегистрированы");
+            }
+            else
+            {
+                MessageBox.Show("Такой логин уже существует! Придумайте другой логин!");
+            }
+             
         }
     }
 }

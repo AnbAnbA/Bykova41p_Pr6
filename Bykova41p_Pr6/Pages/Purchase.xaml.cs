@@ -16,23 +16,13 @@ using System.Windows.Shapes;
 namespace Bykova41p_Pr6.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MenuA.xaml
+    /// Логика взаимодействия для Purchase.xaml
     /// </summary>
-    public partial class MenuA : Page
+    public partial class Purchase : Page
     {
-        public MenuA()
+        public Purchase()
         {
             InitializeComponent();
-        }
-
-        private void BTTabUsers_Click(object sender, RoutedEventArgs e)
-        {
-            FrameC.frameM.Navigate(new AdminM());
-        }
-
-        private void BTTabOsn_Click(object sender, RoutedEventArgs e)
-        {
-            FrameC.frameM.Navigate(new Purchase());
         }
     }
 }
