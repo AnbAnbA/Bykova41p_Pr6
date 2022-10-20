@@ -24,17 +24,18 @@ namespace Bykova41p_Pr6
         {
             InitializeComponent();
             Base.ES = new Entities();
+            FrameC.frameM = frameM;
             
         }
 
         private void BTReg_Click(object sender, RoutedEventArgs e)
         {
-            frameM.Navigate(new Reg());
+            FrameC.frameM.Navigate(new Reg());
         }
 
         private void BTSign_Click(object sender, RoutedEventArgs e)
         {
-            frameM.Navigate(new Auto());
+            FrameC.frameM.Navigate(new Auto());
         }
 
         private void BTOut_Click(object sender, RoutedEventArgs e)

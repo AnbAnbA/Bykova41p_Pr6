@@ -39,7 +39,7 @@ namespace Bykova41p_Pr6
                 {
                     case 1:
                         MessageBox.Show("Здравствуйте, администратор " + User.Name);
-                        FrameC.frameM.Navigate(new AdminM(User));  // переход в меню администратора
+                        FrameC.frameM.Navigate(new Pages.MenuA());  // переход в меню администратора
                         break;
                     case 2:
                         MessageBox.Show("Здравствуйте, пользователь " + User.Name);

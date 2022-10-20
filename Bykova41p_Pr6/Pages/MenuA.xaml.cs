@@ -13,18 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Bykova41p_Pr6
+namespace Bykova41p_Pr6.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AdminM.xaml
+    /// Логика взаимодействия для MenuA.xaml
     /// </summary>
-    public partial class AdminM : Page
+    public partial class MenuA : Page
     {
-        private Table_Users _user;
-        public AdminM(Table_Users User)
+        public MenuA()
         {
             InitializeComponent();
-            _user = User;
+        }
+
+        private void BTTabUsers_Click(object sender, RoutedEventArgs e)
+        {
+            FrameC.frameM.Navigate(new AdminM());
         }
     }
 }
