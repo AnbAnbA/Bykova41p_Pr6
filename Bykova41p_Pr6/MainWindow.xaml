@@ -11,17 +11,35 @@
             <RowDefinition Height="75"></RowDefinition>
             <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Grid.Column="1">
             <StackPanel>
-                <TextBlock Text="Магазин одежды и обуви"/>
+                <TextBlock Text="Магазин одежды и обуви" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel>
                 <Image  Height="50" Width="100"/>
             </StackPanel>
-            <Button x:Name="BTReg" Click="BTReg_Click" Content="Зарегистрироваться" Margin="656,22,28,24"></Button>
-            <Button x:Name="BTSign" Click="BTSign_Click" Content="Войти" Margin="504,22,180,24"></Button>
-            <Button x:Name="BTOut" Click="BTOut_Click" Content="Выйти" Margin="342,22,342,24"></Button>
+
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="0" Grid.Column="0">
+            <StackPanel>
+                <Image  Height="50" Width="100"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="3">
+            <StackPanel Grid.Row="0" Grid.Column="3">
+                <Button x:Name="BTReg" Margin="3" Click="BTReg_Click" Content="Зарегистрироваться" />
+                <Button x:Name="BTSign" Margin="3" Click="BTSign_Click" Content="Войти"/>
+                <Button x:Name="BTOut" Margin="3" Click="BTOut_Click" Content="Выйти"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1"  Grid.ColumnSpan="3">
             <StackPanel>
                 <Frame x:Name="frameM" NavigationUIVisibility="Hidden" Height="375" Width="791"/>
             </StackPanel>

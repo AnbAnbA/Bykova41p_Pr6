@@ -23,6 +23,12 @@ namespace Bykova41p_Pr6.Pages
         public Purchase()
         {
             InitializeComponent();
+            LVPur.ItemsSource = Base.ES.Table_Purchase.ToList();
+        }
+
+        private void TextBlock_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

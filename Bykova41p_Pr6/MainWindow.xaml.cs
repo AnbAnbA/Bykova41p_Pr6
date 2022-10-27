@@ -23,7 +23,7 @@ namespace Bykova41p_Pr6
         public MainWindow()
         {
             InitializeComponent();
-            Base.ES = new Entities();
+            Base.ES = new Entities1();
             FrameC.frameM = frameM;
             
         }

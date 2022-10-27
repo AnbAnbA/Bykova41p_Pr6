@@ -15,8 +15,8 @@ namespace Bykova41p_Pr6
     public partial class Table_Meaning
     {
         public int IdMeaning { get; set; }
-        public int IdClothes { get; set; }
-        public int IdShoes { get; set; }
+        public Nullable<int> IdClothes { get; set; }
+        public Nullable<int> IdShoes { get; set; }
         public int IdCharacteristic { get; set; }
         public string Meaning { get; set; }
     

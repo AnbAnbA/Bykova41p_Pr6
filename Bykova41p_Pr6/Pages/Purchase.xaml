@@ -9,8 +9,6 @@
       Title="Purchase">
 
     <Grid>
-        <StackPanel>
-        
         <ListView Name="LVPur" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -20,23 +18,22 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Padding="5" CornerRadius="5" BorderThickness="1" BorderBrush="BlueViolet">
-                        <Grid Width="300" Height="200">
+                        <Grid Name="GRM" Width="300" Height="200">
                             <StackPanel>
                                 <TextBlock Text="{Binding CatGender}"></TextBlock>
                                 <TextBlock Text="{Binding Table_Customer.NameCustomer}"></TextBlock>
                                 <TextBlock Text="{Binding Table_Gender.genger}"></TextBlock>
-                                <TextBlock Text="{Binding DatePurchase, StringFormat={}{0:dd.MM.yyyy}}"></TextBlock>
+                                <TextBlock Text="{Binding DatePurchase, ConverterCulture=ru, StringFormat={}dd MM yyyy года}"></TextBlock>
                                 <TextBlock Loaded="TextBlock_Loaded" Uid="{Binding idPurchase}"></TextBlock>
                                 <TextBlock>Уходит на питание:</TextBlock>
-                                    <TextBlock Loaded="TextBlock_Loaded_1" Uid="{Binding idPurchase}"></TextBlock>
+                                <!--<TextBlock Loaded="TextBlock_Loaded_1" Uid="{Binding idPurchase}"></TextBlock>-->
                                 <Image  Height="50" Width="100"/>
-                                
+
                             </StackPanel>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        </StackPanel>
     </Grid>
 </Page>

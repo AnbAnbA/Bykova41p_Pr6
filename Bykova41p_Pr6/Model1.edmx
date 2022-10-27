@@ -19,7 +19,7 @@
           <Property Name="IdClothes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameClothes" Type="nchar" MaxLength="25" Nullable="false" />
           <Property Name="PriceClothes" Type="money" Nullable="false" />
-          <Property Name="ImageClothes" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ImageClothes" Type="nvarchar(max)" />
           <Property Name="IdGenderClothes" Type="int" Nullable="false" />
           <Property Name="IdMeaningClothes" Type="int" Nullable="false" />
         </EntityType>
@@ -43,8 +43,8 @@
             <PropertyRef Name="IdMeaning" />
           </Key>
           <Property Name="IdMeaning" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdClothes" Type="int" Nullable="false" />
-          <Property Name="IdShoes" Type="int" Nullable="false" />
+          <Property Name="IdClothes" Type="int" />
+          <Property Name="IdShoes" Type="int" />
           <Property Name="IdCharacteristic" Type="int" Nullable="false" />
           <Property Name="Meaning" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -54,8 +54,8 @@
           </Key>
           <Property Name="IdPurchase" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdCustomer" Type="int" Nullable="false" />
-          <Property Name="IdClothes" Type="int" Nullable="false" />
-          <Property Name="IdShoes" Type="int" Nullable="false" />
+          <Property Name="IdClothes" Type="int" />
+          <Property Name="IdShoes" Type="int" />
           <Property Name="AmountPurchase" Type="int" Nullable="false" />
           <Property Name="DatePurchase" Type="date" Nullable="false" />
           <Property Name="TotalPurchase" Type="money" Nullable="false" />
@@ -74,7 +74,7 @@
           <Property Name="IdShoes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameShoes" Type="nchar" MaxLength="25" Nullable="false" />
           <Property Name="PriceShoes" Type="money" Nullable="false" />
-          <Property Name="ImageShoes" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ImageShoes" Type="nvarchar(max)" />
           <Property Name="IdGenderShoes" Type="int" Nullable="false" />
           <Property Name="IdMeaningShoes" Type="int" Nullable="false" />
         </EntityType>
@@ -117,7 +117,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Table_Meaning_Table_Clothes">
-          <End Role="Table_Clothes" Type="Self.Table_Clothes" Multiplicity="1" />
+          <End Role="Table_Clothes" Type="Self.Table_Clothes" Multiplicity="0..1" />
           <End Role="Table_Meaning" Type="Self.Table_Meaning" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Table_Clothes">
@@ -129,7 +129,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Table_Meaning_Table_Shoes">
-          <End Role="Table_Shoes" Type="Self.Table_Shoes" Multiplicity="1" />
+          <End Role="Table_Shoes" Type="Self.Table_Shoes" Multiplicity="0..1" />
           <End Role="Table_Meaning" Type="Self.Table_Meaning" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Table_Shoes">
@@ -141,7 +141,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Table_Purchase_Table_Clothes">
-          <End Role="Table_Clothes" Type="Self.Table_Clothes" Multiplicity="1" />
+          <End Role="Table_Clothes" Type="Self.Table_Clothes" Multiplicity="0..1" />
           <End Role="Table_Purchase" Type="Self.Table_Purchase" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Table_Clothes">
@@ -165,7 +165,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Table_Purchase_Table_Shoes">
-          <End Role="Table_Shoes" Type="Self.Table_Shoes" Multiplicity="1" />
+          <End Role="Table_Shoes" Type="Self.Table_Shoes" Multiplicity="0..1" />
           <End Role="Table_Purchase" Type="Self.Table_Purchase" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Table_Shoes">
@@ -283,7 +283,7 @@
           <Property Name="IdClothes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameClothes" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="PriceClothes" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="ImageClothes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ImageClothes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IdGenderClothes" Type="Int32" Nullable="false" />
           <Property Name="IdMeaningClothes" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Table_Gender" Relationship="Self.FK_Table_Clothes_Table_Gender" FromRole="Table_Clothes" ToRole="Table_Gender" />
@@ -314,8 +314,8 @@
             <PropertyRef Name="IdMeaning" />
           </Key>
           <Property Name="IdMeaning" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdClothes" Type="Int32" Nullable="false" />
-          <Property Name="IdShoes" Type="Int32" Nullable="false" />
+          <Property Name="IdClothes" Type="Int32" />
+          <Property Name="IdShoes" Type="Int32" />
           <Property Name="IdCharacteristic" Type="Int32" Nullable="false" />
           <Property Name="Meaning" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Table_Characteristic" Relationship="Self.FK_Table_Meaning_Table_Characteristic" FromRole="Table_Meaning" ToRole="Table_Characteristic" />
@@ -328,8 +328,8 @@
           </Key>
           <Property Name="IdPurchase" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdCustomer" Type="Int32" Nullable="false" />
-          <Property Name="IdClothes" Type="Int32" Nullable="false" />
-          <Property Name="IdShoes" Type="Int32" Nullable="false" />
+          <Property Name="IdClothes" Type="Int32" />
+          <Property Name="IdShoes" Type="Int32" />
           <Property Name="AmountPurchase" Type="Int32" Nullable="false" />
           <Property Name="DatePurchase" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TotalPurchase" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
@@ -352,7 +352,7 @@
           <Property Name="IdShoes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameShoes" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="PriceShoes" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="ImageShoes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ImageShoes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IdGenderShoes" Type="Int32" Nullable="false" />
           <Property Name="IdMeaningShoes" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Table_Gender" Relationship="Self.FK_Table_Shoes_Table_Gender" FromRole="Table_Shoes" ToRole="Table_Gender" />
@@ -400,7 +400,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Table_Meaning_Table_Clothes">
-          <End Role="Table_Clothes" Type="Self.Table_Clothes" Multiplicity="1" />
+          <End Role="Table_Clothes" Type="Self.Table_Clothes" Multiplicity="0..1" />
           <End Role="Table_Meaning" Type="Self.Table_Meaning" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Table_Clothes">
@@ -412,7 +412,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Table_Purchase_Table_Clothes">
-          <End Role="Table_Clothes" Type="Self.Table_Clothes" Multiplicity="1" />
+          <End Role="Table_Clothes" Type="Self.Table_Clothes" Multiplicity="0..1" />
           <End Role="Table_Purchase" Type="Self.Table_Purchase" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Table_Clothes">
@@ -460,7 +460,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Table_Meaning_Table_Shoes">
-          <End Role="Table_Shoes" Type="Self.Table_Shoes" Multiplicity="1" />
+          <End Role="Table_Shoes" Type="Self.Table_Shoes" Multiplicity="0..1" />
           <End Role="Table_Meaning" Type="Self.Table_Meaning" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Table_Shoes">
@@ -472,7 +472,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Table_Purchase_Table_Shoes">
-          <End Role="Table_Shoes" Type="Self.Table_Shoes" Multiplicity="1" />
+          <End Role="Table_Shoes" Type="Self.Table_Shoes" Multiplicity="0..1" />
           <End Role="Table_Purchase" Type="Self.Table_Purchase" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Table_Shoes">
@@ -495,7 +495,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Table_Characteristic" EntityType="Self.Table_Characteristic" />
           <EntitySet Name="Table_Clothes" EntityType="Self.Table_Clothes" />
           <EntitySet Name="Table_Customer" EntityType="Self.Table_Customer" />
@@ -551,7 +551,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities1">
           <EntitySetMapping Name="Table_Characteristic">
             <EntityTypeMapping TypeName="Model.Table_Characteristic">
               <MappingFragment StoreEntitySet="Table_Characteristic">

@@ -16,8 +16,8 @@ namespace Bykova41p_Pr6
     {
         public int IdPurchase { get; set; }
         public int IdCustomer { get; set; }
-        public int IdClothes { get; set; }
-        public int IdShoes { get; set; }
+        public Nullable<int> IdClothes { get; set; }
+        public Nullable<int> IdShoes { get; set; }
         public int AmountPurchase { get; set; }
         public System.DateTime DatePurchase { get; set; }
         public decimal TotalPurchase { get; set; }

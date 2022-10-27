@@ -8,6 +8,6 @@ namespace Bykova41p_Pr6
 {
     internal class Base
     {
-        public static Entities ES;
+        public static Entities1 ES;
     }
 }
