@@ -42,11 +42,11 @@
                                     </StackPanel>
                                     <!--<TextBlock Text="{Binding Table_Clothes.gender}"></TextBlock>-->
                                     <TextBlock Text="Дата покупки:"></TextBlock>
-                                    <TextBlock Text="{Binding DatePurchase, ConverterCulture=ru, StringFormat={}dd MM yyyy года}"></TextBlock>
+                                    <TextBlock Text="{Binding DatePurchase, ConverterCulture=ru, StringFormat={}dd.MM.yyyy года}"></TextBlock>
                                     <TextBlock Loaded="TextBlock_Loaded" Uid="{Binding idPurchase}"></TextBlock>
                                     
                                     <!--<TextBlock Loaded="TextBlock_Loaded_1" Uid="{Binding idPurchase}"></TextBlock>-->
-                                    <Image  Height="50" Width="100" Source="{Binding Photo, TargetNullValue={StaticResource defaultImage}}"/>
+                                    <Image  Height="50" Width="100" Source="{Binding Image, TargetNullValue={StaticResource defaultImage}}"/>
 
                             </StackPanel>
                         </Grid>
