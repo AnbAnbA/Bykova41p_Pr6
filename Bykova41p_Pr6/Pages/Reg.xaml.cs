@@ -31,6 +31,7 @@ namespace Bykova41p_Pr6
             CbRole.ItemsSource = Base.ES.Table_Role.ToList();
             CbRole.SelectedValuePath = "idRole";
             CbRole.DisplayMemberPath = "Role";
+            CbRole.SelectedIndex = 1;
             
         }
 
@@ -56,7 +57,7 @@ namespace Bykova41p_Pr6
                                 Table_Users User = Base.ES.Table_Users.FirstOrDefault(z => z.Login == TbLog.Text);
                                 if (User == null)
                                 {
-                                    Table_Users UserRez = new Table_Users() { Name = TbName.Text, Surname = TbSurn.Text, Patronymic = TbPatr.Text, DateBirthday = (DateTime)DPBirth.SelectedDate, IdGender = CbGender.SelectedIndex + 1, Login = TbLog.Text, Pssword = pasGegCode, IdRole = CbRole.SelectedIndex + 1 };
+                                    Table_Users UserRez = new Table_Users() { Name = TbName.Text, Surname = TbSurn.Text, Patronymic = TbPatr.Text, DateBirthday = (DateTime)DPBirth.SelectedDate, IdGender = CbGender.SelectedIndex + 1, Login = TbLog.Text, Pssword = pasGegCode, IdRole = 2 };
                                     Base.ES.Table_Users.Add(UserRez);
                                     Base.ES.SaveChanges();
                                     MessageBox.Show("Вы зарегистрированы");
@@ -89,10 +90,7 @@ namespace Bykova41p_Pr6
             else 
             {
                 MessageBox.Show("Пароль должен иметь хотя бы 1 заглавную латинскую букву");
-            }
-
-         
-             
+            }  
         }
     }
 }

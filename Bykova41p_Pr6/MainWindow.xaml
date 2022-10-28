@@ -22,21 +22,17 @@
                 <TextBlock Text="Магазин одежды и обуви" HorizontalAlignment="Center"/>
             </StackPanel>
 
-            <StackPanel>
-                <Image  Height="50" Width="100"/>
-            </StackPanel>
-
         </Grid>
         <Grid Grid.Row="0" Grid.Column="0">
             <StackPanel>
-                <Image  Height="50" Width="100"/>
+                <Image  Height="70" Width="150" Source="Res/def.jpg"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="0" Grid.Column="3">
             <StackPanel Grid.Row="0" Grid.Column="3">
                 <Button x:Name="BTReg" Margin="3" Click="BTReg_Click" Content="Зарегистрироваться" />
                 <Button x:Name="BTSign" Margin="3" Click="BTSign_Click" Content="Войти"/>
-                <Button x:Name="BTOut" Margin="3" Click="BTOut_Click" Content="Выйти"/>
+                <Button x:Name="BTOut" Margin="3" Click="BTOut_Click" Content="Выйти на главную"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1"  Grid.ColumnSpan="3">

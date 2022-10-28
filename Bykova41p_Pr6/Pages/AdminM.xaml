@@ -9,6 +9,14 @@
       Title="AdminM">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Button Name="btnBack" Width="70" Height="20" HorizontalAlignment="Left" Margin="36,0,0,0" Content="Назад" Click="btnBack_Click" HorizontalContentAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="1">
         <DataGrid Name="DGUsers" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Center" HorizontalContentAlignment="Center" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Имя" Width="120" Binding="{Binding Name}"></DataGridTextColumn>
@@ -20,5 +28,6 @@
                 <DataGridTextColumn Header="Роль" Width="150" Binding="{Binding Table_Role.Role}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        </Grid>
     </Grid>
 </Page>

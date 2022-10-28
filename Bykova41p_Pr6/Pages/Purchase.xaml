@@ -7,9 +7,19 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Purchase">
-
+    <Page.Resources>
+        <BitmapImage x:Key="defaultImage" UriSource="/Res/def.jpg"/>
+    </Page.Resources>
     <Grid>
-        <ListView Name="LVPur" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Button Name="btnBack" Width="70" Height="20" HorizontalAlignment="Left" Margin="36,0,0,0" Content="Назад" Click="btnBack_Click" HorizontalContentAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <ListView Name="LVPur" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"></WrapPanel>
@@ -19,15 +29,24 @@
                 <DataTemplate>
                     <Border Padding="5" CornerRadius="5" BorderThickness="1" BorderBrush="BlueViolet">
                         <Grid Name="GRM" Width="300" Height="200">
-                            <StackPanel>
-                                <TextBlock Text="{Binding CatGender}"></TextBlock>
-                                <TextBlock Text="{Binding Table_Customer.NameCustomer}"></TextBlock>
-                                <TextBlock Text="{Binding Table_Gender.genger}"></TextBlock>
-                                <TextBlock Text="{Binding DatePurchase, ConverterCulture=ru, StringFormat={}dd MM yyyy года}"></TextBlock>
-                                <TextBlock Loaded="TextBlock_Loaded" Uid="{Binding idPurchase}"></TextBlock>
-                                <TextBlock>Уходит на питание:</TextBlock>
-                                <!--<TextBlock Loaded="TextBlock_Loaded_1" Uid="{Binding idPurchase}"></TextBlock>-->
-                                <Image  Height="50" Width="100"/>
+                                <StackPanel>
+                                    <TextBlock Text="Покупатель:"></TextBlock>
+                                    <TextBlock Text="{Binding Table_Customer.NameCustomer}"></TextBlock>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Table_Clothes.NameClothes}"></TextBlock>
+                                        <TextBlock Text="{Binding Table_Clothes.PriceClothes}"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Table_Shoes.NameShoes}"></TextBlock>
+                                        <TextBlock Text="{Binding Table_Shoes.PriceShoes}"></TextBlock>
+                                    </StackPanel>
+                                    <!--<TextBlock Text="{Binding Table_Clothes.gender}"></TextBlock>-->
+                                    <TextBlock Text="Дата покупки:"></TextBlock>
+                                    <TextBlock Text="{Binding DatePurchase, ConverterCulture=ru, StringFormat={}dd MM yyyy года}"></TextBlock>
+                                    <TextBlock Loaded="TextBlock_Loaded" Uid="{Binding idPurchase}"></TextBlock>
+                                    
+                                    <!--<TextBlock Loaded="TextBlock_Loaded_1" Uid="{Binding idPurchase}"></TextBlock>-->
+                                    <Image  Height="50" Width="100" Source="{Binding Photo, TargetNullValue={StaticResource defaultImage}}"/>
 
                             </StackPanel>
                         </Grid>
@@ -35,5 +54,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </Grid>
+            </Grid>
+        </Grid>
 </Page>

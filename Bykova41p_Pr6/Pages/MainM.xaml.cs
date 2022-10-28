@@ -16,24 +16,13 @@ using System.Windows.Shapes;
 namespace Bykova41p_Pr6.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Purchase.xaml
+    /// Логика взаимодействия для MainM.xaml
     /// </summary>
-    public partial class Purchase : Page
+    public partial class MainM : Page
     {
-        public Purchase()
+        public MainM()
         {
             InitializeComponent();
-            LVPur.ItemsSource = Base.ES.Table_Purchase.ToList();
-        }
-
-        private void TextBlock_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-            FrameC.frameM.Navigate(new Pages.MenuA());
         }
     }
 }

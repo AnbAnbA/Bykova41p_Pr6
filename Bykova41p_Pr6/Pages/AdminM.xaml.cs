@@ -27,5 +27,10 @@ namespace Bykova41p_Pr6
             //_user = User;
             DGUsers.ItemsSource = Base.ES.Table_Users.ToList();
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            FrameC.frameM.Navigate(new Pages.MenuA());
+        }
     }
 }

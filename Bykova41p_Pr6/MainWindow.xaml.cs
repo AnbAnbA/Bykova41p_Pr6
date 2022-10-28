@@ -40,7 +40,7 @@ namespace Bykova41p_Pr6
 
         private void BTOut_Click(object sender, RoutedEventArgs e)
         {
-            
+            FrameC.frameM.Navigate(new Pages.MainM());
         }
     }
 }
