@@ -4,26 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c4981ec5ae4a4cc8bc8b4703d227f162" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.Table_Characteristic" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Table_Clothes" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Table_Customer" Width="1.5" PointX="6" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Table_Gender" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Table_Meaning" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Table_Purchase" Width="1.5" PointX="8.25" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Table_Role" Width="1.5" PointX="3.75" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Table_Shoes" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Table_Users" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK_Table_Meaning_Table_Characteristic" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Table_Clothes_Table_Gender" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Table_Meaning_Table_Clothes" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Table_Purchase_Table_Clothes" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Table_Purchase_Table_Customer" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Table_Shoes_Table_Gender" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Table_Users_Table_Gender" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Table_Meaning_Table_Shoes" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Table_Purchase_Table_Shoes" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Table_Users_Table_Role" ManuallyRouted="false" />
+      <Diagram DiagramId="c4981ec5ae4a4cc8bc8b4703d227f162" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="Model.Table_Characteristic" Width="1.5" PointX="3" PointY="16.25" />
+        <EntityTypeShape EntityType="Model.Table_Clothes" Width="1.5" PointX="3" PointY="12.375" />
+        <EntityTypeShape EntityType="Model.Table_Customer" Width="1.5" PointX="8.25" PointY="8.125" />
+        <EntityTypeShape EntityType="Model.Table_Gender" Width="1.5" PointX="0.75" PointY="7.125" />
+        <EntityTypeShape EntityType="Model.Table_Meaning" Width="1.5" PointX="5.25" PointY="10.75" />
+        <EntityTypeShape EntityType="Model.Table_Products" Width="1.5" PointX="8.25" PointY="10.75" />
+        <EntityTypeShape EntityType="Model.Table_Purchase" Width="1.5" PointX="10.5" PointY="10.875" />
+        <EntityTypeShape EntityType="Model.Table_Role" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="Model.Table_Shoes" Width="1.5" PointX="3" PointY="8.875" />
+        <EntityTypeShape EntityType="Model.Table_Users" Width="1.5" PointX="3" PointY="4.5" />
+        <AssociationConnector Association="Model.FK_Table_Meaning_Table_Characteristic" />
+        <AssociationConnector Association="Model.FK_Table_Clothes_Table_Gender" />
+        <AssociationConnector Association="Model.FK_Table_Meaning_Table_Clothes" />
+        <AssociationConnector Association="Model.FK_Table_Products_Table_Products" />
+        <AssociationConnector Association="Model.FK_Table_Purchase_Table_Customer" />
+        <AssociationConnector Association="Model.FK_Table_Shoes_Table_Gender" />
+        <AssociationConnector Association="Model.FK_Table_Users_Table_Gender" />
+        <AssociationConnector Association="Model.FK_Table_Meaning_Table_Shoes" />
+        <AssociationConnector Association="Model.FK_Table_Products_Table_Shoes" />
+        <AssociationConnector Association="Model.FK_Table_Purchase_Table_Products" />
+        <AssociationConnector Association="Model.FK_Table_Users_Table_Role" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

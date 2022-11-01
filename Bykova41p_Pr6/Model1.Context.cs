@@ -30,6 +30,7 @@ namespace Bykova41p_Pr6
         public virtual DbSet<Table_Customer> Table_Customer { get; set; }
         public virtual DbSet<Table_Gender> Table_Gender { get; set; }
         public virtual DbSet<Table_Meaning> Table_Meaning { get; set; }
+        public virtual DbSet<Table_Products> Table_Products { get; set; }
         public virtual DbSet<Table_Purchase> Table_Purchase { get; set; }
         public virtual DbSet<Table_Role> Table_Role { get; set; }
         public virtual DbSet<Table_Shoes> Table_Shoes { get; set; }

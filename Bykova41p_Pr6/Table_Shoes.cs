@@ -18,7 +18,7 @@ namespace Bykova41p_Pr6
         public Table_Shoes()
         {
             this.Table_Meaning = new HashSet<Table_Meaning>();
-            this.Table_Purchase = new HashSet<Table_Purchase>();
+            this.Table_Products = new HashSet<Table_Products>();
         }
     
         public int IdShoes { get; set; }
@@ -32,6 +32,6 @@ namespace Bykova41p_Pr6
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Table_Meaning> Table_Meaning { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Table_Purchase> Table_Purchase { get; set; }
+        public virtual ICollection<Table_Products> Table_Products { get; set; }
     }
 }

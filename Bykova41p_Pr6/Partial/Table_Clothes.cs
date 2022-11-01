@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Media;
 
 namespace Bykova41p_Pr6.Partial
 {
-    public partial class Table_Purchase
+    partial class Table_Clothes
     {
-        public string custom
+        public string cloth 
         {
             get 
             {
-                return "Покупатель: " + Table_Customer.NameCustomer;
+                return "п" ; 
             }
         }
-        //+Table_Customer.NameCustomer
+        //NameClothes + PriceClothes
     }
 }

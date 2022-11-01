@@ -12,26 +12,23 @@ namespace Bykova41p_Pr6
     using System;
     using System.Collections.Generic;
     
-    public partial class Table_Clothes
+    public partial class Table_Products
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Table_Clothes()
+        public Table_Products()
         {
-            this.Table_Meaning = new HashSet<Table_Meaning>();
-            this.Table_Products = new HashSet<Table_Products>();
+            this.Table_Purchase = new HashSet<Table_Purchase>();
         }
     
-        public int IdClothes { get; set; }
-        public string NameClothes { get; set; }
-        public decimal PriceClothes { get; set; }
-        public string ImageClothes { get; set; }
-        public int IdGenderClothes { get; set; }
-        public int IdMeaningClothes { get; set; }
+        public int IdProducts { get; set; }
+        public int IdPurchase { get; set; }
+        public Nullable<int> IdClothes { get; set; }
+        public Nullable<int> IdShoes { get; set; }
+        public Nullable<int> Amount { get; set; }
     
-        public virtual Table_Gender Table_Gender { get; set; }
+        public virtual Table_Clothes Table_Clothes { get; set; }
+        public virtual Table_Shoes Table_Shoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Table_Meaning> Table_Meaning { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Table_Products> Table_Products { get; set; }
+        public virtual ICollection<Table_Purchase> Table_Purchase { get; set; }
     }
 }

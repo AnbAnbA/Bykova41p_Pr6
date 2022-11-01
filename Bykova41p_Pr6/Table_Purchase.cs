@@ -16,14 +16,11 @@ namespace Bykova41p_Pr6
     {
         public int IdPurchase { get; set; }
         public int IdCustomer { get; set; }
-        public Nullable<int> IdClothes { get; set; }
-        public Nullable<int> IdShoes { get; set; }
-        public int AmountPurchase { get; set; }
+        public int IdProducts { get; set; }
         public System.DateTime DatePurchase { get; set; }
-        public decimal TotalPurchase { get; set; }
+        public Nullable<decimal> TotalPurchase { get; set; }
     
-        public virtual Table_Clothes Table_Clothes { get; set; }
         public virtual Table_Customer Table_Customer { get; set; }
-        public virtual Table_Shoes Table_Shoes { get; set; }
+        public virtual Table_Products Table_Products { get; set; }
     }
 }

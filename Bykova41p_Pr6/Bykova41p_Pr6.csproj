@@ -103,6 +103,7 @@
       <DependentUpon>Reg.xaml</DependentUpon>
     </Compile>
     <Compile Include="Partial\PartialPurchase.cs" />
+    <Compile Include="Partial\Table_Clothes.cs" />
     <Compile Include="Table_Characteristic.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -116,6 +117,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Table_Meaning.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Table_Products.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Table_Purchase.cs">

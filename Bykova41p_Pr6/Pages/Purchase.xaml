@@ -32,18 +32,17 @@
                                 <StackPanel>
                                     <TextBlock Text="Покупатель:"></TextBlock>
                                     <TextBlock Text="{Binding Table_Customer.NameCustomer}"></TextBlock>
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding Table_Clothes.NameClothes}"></TextBlock>
-                                        <TextBlock Text="{Binding Table_Clothes.PriceClothes}"></TextBlock>
-                                    </StackPanel>
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding Table_Shoes.NameShoes}"></TextBlock>
-                                        <TextBlock Text="{Binding Table_Shoes.PriceShoes}"></TextBlock>
-                                    </StackPanel>
+                                    <TextBlock Width="490" TextWrapping="Wrap" Name="tbMean" Uid="{Binding IdProducts}" Loaded="tbMean_Loaded"></TextBlock>
+                                    <TextBlock Width="490" TextWrapping="Wrap" Name="tbPriceCl" Uid="{Binding IdProducts}" Loaded="tbPriceCl_Loaded" ></TextBlock>
+
+                                    <TextBlock Width="490" TextWrapping="Wrap" Name="tbMeansh" Uid="{Binding IdProducts}" Loaded="tbMeansh_Loaded"></TextBlock>
+                                    <TextBlock Width="490" TextWrapping="Wrap" Name="tbPriceSh" Uid="{Binding IdProducts}" Loaded="tbPriceSh_Loaded" ></TextBlock>
+                                    <TextBlock Text="Количество:"></TextBlock>
+                                    <TextBlock Text="{Binding AmountPurchase}"></TextBlock>
                                     <!--<TextBlock Text="{Binding Table_Clothes.gender}"></TextBlock>-->
                                     <TextBlock Text="Дата покупки:"></TextBlock>
                                     <TextBlock Text="{Binding DatePurchase, ConverterCulture=ru, StringFormat={}dd.MM.yyyy года}"></TextBlock>
-                                    <TextBlock Loaded="TextBlock_Loaded" Uid="{Binding idPurchase}"></TextBlock>
+                                   
                                     
                                     <!--<TextBlock Loaded="TextBlock_Loaded_1" Uid="{Binding idPurchase}"></TextBlock>-->
                                     <Image  Height="50" Width="100" Source="{Binding Image, TargetNullValue={StaticResource defaultImage}}"/>

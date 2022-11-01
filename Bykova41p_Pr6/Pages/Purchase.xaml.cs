@@ -26,14 +26,87 @@ namespace Bykova41p_Pr6.Pages
             LVPur.ItemsSource = Base.ES.Table_Purchase.ToList();
         }
 
-        private void TextBlock_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             FrameC.frameM.Navigate(new Pages.MenuA());
+        }
+
+        private void tbMean_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBlock tb = (TextBlock)sender;
+            int index = Convert.ToInt32(tb.Uid);
+            List<Table_Products> TP = Base.ES.Table_Products.Where(x => x.IdProducts == index).ToList();
+            //string strk = "";
+
+            List<Table_Meaning> TM = Base.ES.Table_Meaning.Where(x => x.IdClothes == index).ToList();
+            //int ind = Convert.ToInt32(Base.ES.Table_Meaning.IdCharacteristic);
+            //List<Table_Characteristic> TC = Base.ES.Table_Characteristic.Where(x => x.IdCharacteristic == ind).ToList();
+            string str = "";
+
+            foreach (Table_Products tp in TP) 
+            {
+                str+=tp.Table_Clothes.NameClothes+", ";
+                foreach (Table_Meaning tm in TM)
+                {
+                    str += tm.Table_Characteristic.Characteristic + ": " + tm.Meaning + ", ";
+                }
+            }
+            tb.Text = str.Substring(0, str.Length );
+
+
+        }
+        private void tbPriceCl_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBlock tb = (TextBlock)sender;
+            int index = Convert.ToInt32(tb.Uid);
+            List<Table_Products> TP = Base.ES.Table_Products.Where(x => x.IdProducts == index).ToList();
+
+            string str = "";
+
+            foreach (Table_Products tp in TP) 
+            {
+                str += tp.Table_Clothes.PriceClothes;
+            }
+            tb.Text = "Цена: "+str.Substring(0, str.Length);
+        }
+
+        private void tbMeansh_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBlock tb = (TextBlock)sender;
+            int index = Convert.ToInt32(tb.Uid);
+            List<Table_Products> TP = Base.ES.Table_Products.Where(x => x.IdProducts == index).ToList();
+            //string strk = "";
+
+            List<Table_Meaning> TM = Base.ES.Table_Meaning.Where(x => x.IdClothes == index).ToList();
+            //int ind = Convert.ToInt32(Base.ES.Table_Meaning.IdCharacteristic);
+            //List<Table_Characteristic> TC = Base.ES.Table_Characteristic.Where(x => x.IdCharacteristic == ind).ToList();
+            string str = "";
+
+            foreach (Table_Products tp in TP)
+            {
+                str += tp.Table_Shoes.NameShoes + ", ";
+                foreach (Table_Meaning tm in TM)
+                {
+                    str += tm.Table_Characteristic.Characteristic + ": " + tm.Meaning + ", ";
+                }
+            }
+            tb.Text = str.Substring(0, str.Length);
+        }
+
+        private void tbPriceSh_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBlock tb = (TextBlock)sender;
+            int index = Convert.ToInt32(tb.Uid);
+            List<Table_Products> TP = Base.ES.Table_Products.Where(x => x.IdProducts == index).ToList();
+
+            string str = "";
+
+            foreach (Table_Products tp in TP)
+            {
+                str += tp.Table_Shoes.PriceShoes;
+            }
+            tb.Text = "Цена: " + str.Substring(0, str.Length);
         }
     }
 }
