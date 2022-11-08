@@ -13,7 +13,7 @@ namespace Bykova41p_Pr6.Partial
         {
             get 
             {
-                return "Покупатель: " + Table_Customer.NameCustomer;
+                return "Покупатель: " ;
             }
         }
         //+Table_Customer.NameCustomer

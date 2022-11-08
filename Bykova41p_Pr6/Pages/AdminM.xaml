@@ -10,11 +10,42 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="130"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <Button Name="btnBack" Width="70" Height="20" HorizontalAlignment="Left" Margin="36,0,0,0" Content="Назад" Click="btnBack_Click" HorizontalContentAlignment="Center"/>
+            <Button Name="btnBack" Width="70" Height="20" HorizontalAlignment="Left" Margin="36,0,0,80" Content="Назад" Click="btnBack_Click" HorizontalContentAlignment="Center"/>
+
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Name="btbackish" Click="btbackish_Click" Content="Сброс" Margin="0,0,8,55" Height="55"/>
+                <Button Name="btAsc" Click="btAsc_Click" Content="По возрастанию" Margin="0,0,8,55" Height="55"/>
+                <Button Name="btDesc" Click="btDesc_Click" Content="По убыванию" Margin="0,0,8,55" Height="55"/>
+                <Button Name="btfilM" Click="btfilM_Click" Content="мужчины" Margin="0,0,8,55" Height="55"/>
+                    <Button Name="btfilW" Click="btfilW_Click" Content="женщины" Margin="0,0,0,55" Height="55"/>
+            </StackPanel>
+            <StackPanel Height="89" Margin="0,60,0,0">
+                <GroupBox Header="Поиск по: ">
+                <StackPanel>
+                    <RadioButton Name="RBSurn" Content="по фамилии"  Click="RBSurn_Click"/>
+                    <RadioButton Name="RBName" Content="по имени" Click="RBName_Click"/>
+                    <RadioButton Name="RBsbros" Content="сброс" Click="RBsbros_Click" IsChecked="True"/>
+                </StackPanel>
+            </GroupBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Name="spSurname" Orientation="Horizontal" Visibility="Collapsed">
+                    <TextBlock Text="Фамилия" />
+                    <TextBox Name="tbSurname" Width="200"/>
+                </StackPanel>
+                <StackPanel Name="spName" Orientation="Horizontal" Visibility="Collapsed">
+                    <TextBlock Text="Имя" />
+                    <TextBox Name="tbName" Width="200"/>
+                </StackPanel>
+                <Button Name="btsearch" Click="btsearch_Click" Content="Найти"  Visibility="Collapsed"/>
+            </StackPanel>
+
+
         </Grid>
         <Grid Grid.Row="1">
         <DataGrid Name="DGUsers" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Center" HorizontalContentAlignment="Center" >
