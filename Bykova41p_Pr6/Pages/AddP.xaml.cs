@@ -38,11 +38,26 @@ namespace Bykova41p_Pr6.Pages
         }
 
 
-        public AddP()
+        public AddP(Table_Purchase Pur)
         {
             InitializeComponent();
             uploadFields();
             flagUpdate = true;
+
+        }
+        public AddP()
+        {
+            InitializeComponent();
+            uploadFields();
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            FrameC.frameM.Navigate(new Purchase());
+        }
+
+        private void btncreate_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

@@ -9,6 +9,16 @@
       Title="AddP">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Button Name="btnBack" Width="70" Height="20" HorizontalAlignment="Left" Margin="36,0,0,0" Content="Назад" Click="btnBack_Click" HorizontalContentAlignment="Center"/>
+            <Button Name="btncreate" Width="70" Height="20" HorizontalAlignment="Left" Margin="140,0,0,0" Content="Добавить" Click="btncreate_Click" HorizontalContentAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
         <ScrollViewer Margin="0,24,0,-24">
             <StackPanel>
                 <GroupBox Header="Введите имя покупателя">
@@ -22,5 +32,6 @@
                 </GroupBox>
             </StackPanel>
         </ScrollViewer>
+        </Grid>
     </Grid>
 </Page>

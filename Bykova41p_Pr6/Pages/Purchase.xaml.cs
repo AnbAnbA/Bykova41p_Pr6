@@ -37,11 +37,7 @@ namespace Bykova41p_Pr6.Pages
             TextBlock tb = (TextBlock)sender;
             int index = Convert.ToInt32(tb.Uid);
             List<Table_Products> TP = Base.ES.Table_Products.Where(x => x.IdProducts == index).ToList();
-            //string strk = "";
-
             List<Table_Meaning> TM = Base.ES.Table_Meaning.Where(x => x.IdClothes == index).ToList();
-            //int ind = Convert.ToInt32(Base.ES.Table_Meaning.IdCharacteristic);
-            //List<Table_Characteristic> TC = Base.ES.Table_Characteristic.Where(x => x.IdCharacteristic == ind).ToList();
             string str = "";
 
             foreach (Table_Products tp in TP) 
@@ -76,11 +72,7 @@ namespace Bykova41p_Pr6.Pages
             TextBlock tb = (TextBlock)sender;
             int index = Convert.ToInt32(tb.Uid);
             List<Table_Products> TP = Base.ES.Table_Products.Where(x => x.IdProducts == index).ToList();
-            //string strk = "";
-
             List<Table_Meaning> TM = Base.ES.Table_Meaning.Where(x => x.IdClothes == index).ToList();
-            //int ind = Convert.ToInt32(Base.ES.Table_Meaning.IdCharacteristic);
-            //List<Table_Characteristic> TC = Base.ES.Table_Characteristic.Where(x => x.IdCharacteristic == ind).ToList();
             string str = "";
 
             foreach (Table_Products tp in TP)
@@ -114,8 +106,6 @@ namespace Bykova41p_Pr6.Pages
             TextBlock tb = (TextBlock)sender;
             int index = Convert.ToInt32(tb.Uid);
             List<Table_Products> TP = Base.ES.Table_Products.Where(x => x.IdProducts == index).ToList();
-           
-
             double total = 0;
             foreach (Table_Products tp in TP) 
             {
@@ -126,12 +116,25 @@ namespace Bykova41p_Pr6.Pages
 
         private void btdel_Click(object sender, RoutedEventArgs e)
         {
-
+            Button btn = (Button)sender;
+            int index = Convert.ToInt32(btn.Uid);
+            Table_Purchase Pur = Base.ES.Table_Purchase.FirstOrDefault(x => x.IdPurchase == index);
+            Base.ES.Table_Purchase.Remove(Pur);
+            Base.ES.SaveChanges();
+            FrameC.frameM.Navigate(new Purchase());
         }
 
         private void btnupd_Click(object sender, RoutedEventArgs e)
         {
+            Button btn = (Button)sender;
+            int index = Convert.ToInt32(btn.Uid);
+            Table_Purchase Pur = Base.ES.Table_Purchase.FirstOrDefault(x => x.IdPurchase == index);
+            FrameC.frameM.Navigate(new AddP(Pur));
+        }
 
+        private void btncreate_Click(object sender, RoutedEventArgs e)
+        {
+            FrameC.frameM.Navigate(new AddP());
         }
     }
 }
