@@ -79,6 +79,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddP.xaml.cs">
+      <DependentUpon>AddP.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AdminM.xaml.cs">
       <DependentUpon>AdminM.xaml</DependentUpon>
     </Compile>
@@ -134,6 +137,10 @@
     <Compile Include="Table_Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="Pages\AddP.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AdminM.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

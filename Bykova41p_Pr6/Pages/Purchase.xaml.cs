@@ -108,5 +108,20 @@ namespace Bykova41p_Pr6.Pages
             }
             tb.Text = "Цена: " + str.Substring(0, str.Length);
         }
+
+        private void tbtotalPur_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBlock tb = (TextBlock)sender;
+            int index = Convert.ToInt32(tb.Uid);
+            List<Table_Products> TP = Base.ES.Table_Products.Where(x => x.IdProducts == index).ToList();
+           
+
+            double total = 0;
+            foreach (Table_Products tp in TP) 
+            {
+                total += Convert.ToDouble((tp.Table_Clothes.PriceClothes * tp.Amount) + tp.Table_Shoes.PriceShoes * tp.Amount);
+            }
+            tb.Text = "Итог: " + total.ToString() + " руб.";
+        }
     }
 }
