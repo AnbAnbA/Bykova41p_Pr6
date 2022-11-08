@@ -17,5 +17,14 @@ namespace Bykova41p_Pr6.Partial
             }
         }
         //+Table_Customer.NameCustomer
+
+        //public  SolidColorBrush totalColor 
+        //{
+        //    get 
+        //    {
+        //        switch(TotalPurchase)
+        //    }
+        //}
+
     }
 }

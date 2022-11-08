@@ -36,7 +36,8 @@
                             <Border Padding="5" CornerRadius="5" BorderThickness="1" BorderBrush="BlueViolet">
                                 <Grid Name="GRM" Width="300" Height="295">
                                     <StackPanel>
-                                        <TextBlock Text="Покупатель:"></TextBlock>
+                                    <TextBlock Text="{Binding PartialPurchase}"></TextBlock>
+                                    <TextBlock Text="Покупатель:"></TextBlock>
                                         <TextBlock Text="{Binding Table_Customer.NameCustomer}"></TextBlock>
                                         <TextBlock Width="490" TextWrapping="Wrap" Name="tbMean" Uid="{Binding IdProducts}" Loaded="tbMean_Loaded"></TextBlock>
                                         <TextBlock Width="490" TextWrapping="Wrap" Name="tbPriceCl" Uid="{Binding IdProducts}" Loaded="tbPriceCl_Loaded" ></TextBlock>
