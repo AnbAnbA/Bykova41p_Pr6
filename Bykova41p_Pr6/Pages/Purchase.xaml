@@ -33,7 +33,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Border Padding="5" CornerRadius="5" BorderThickness="1" BorderBrush="BlueViolet">
-                                <Grid Name="GRM" Width="300" Height="200">
+                                <Grid Name="GRM" Width="300" Height="295">
                                     <StackPanel>
                                         <TextBlock Text="Покупатель:"></TextBlock>
                                         <TextBlock Text="{Binding Table_Customer.NameCustomer}"></TextBlock>
@@ -52,9 +52,12 @@
 
 
                                         <!--<TextBlock Loaded="TextBlock_Loaded_1" Uid="{Binding idPurchase}"></TextBlock>-->
-                                        <Image  Height="50" Width="100" Source="{Binding Image, TargetNullValue={StaticResource defaultImage}}"/>
+                                        <Image  Height="50" Width="70" Source="{Binding Table_Clothes.ImageClothes, TargetNullValue={StaticResource defaultImage}}"/>
 
-                                    </StackPanel>
+                                    <Button  Uid="{Binding IdPurchase}" x:Name="btdel" Click="btdel_Click" Content="Удалить" ></Button>
+                                    <Button Uid="{Binding IdPurchase}" Content="Редактировать" Name="btnupd" Click="btnupd_Click"></Button>
+
+                                </StackPanel>
                                 </Grid>
                             </Border>
                         </DataTemplate>

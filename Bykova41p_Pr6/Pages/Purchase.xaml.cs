@@ -123,5 +123,15 @@ namespace Bykova41p_Pr6.Pages
             }
             tb.Text = "Итог: " + total.ToString() + " руб.";
         }
+
+        private void btdel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnupd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
