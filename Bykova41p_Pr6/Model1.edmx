@@ -185,7 +185,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Table_Purchase_Table_Products">
-          <End Role="Table_Products" Type="Self.Table_Products" Multiplicity="1" />
+          <End Role="Table_Products" Type="Self.Table_Products" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Table_Purchase" Type="Self.Table_Purchase" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Table_Products">
@@ -574,7 +576,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Table_Purchase_Table_Products">
-          <End Type="Model.Table_Products" Role="Table_Products" Multiplicity="1" />
+          <End Type="Model.Table_Products" Role="Table_Products" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.Table_Purchase" Role="Table_Purchase" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Table_Products">

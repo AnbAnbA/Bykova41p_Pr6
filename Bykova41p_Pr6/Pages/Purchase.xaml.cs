@@ -49,17 +49,13 @@ namespace Bykova41p_Pr6.Pages
                 }
             }
             tb.Text = str.Substring(0, str.Length );
-
-
         }
         private void tbPriceCl_Loaded(object sender, RoutedEventArgs e)
         {
             TextBlock tb = (TextBlock)sender;
             int index = Convert.ToInt32(tb.Uid);
             List<Table_Products> TP = Base.ES.Table_Products.Where(x => x.IdProducts == index).ToList();
-
             string str = "";
-
             foreach (Table_Products tp in TP) 
             {
                 str += tp.Table_Clothes.PriceClothes;
