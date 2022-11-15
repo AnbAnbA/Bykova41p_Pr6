@@ -99,11 +99,17 @@
     <Compile Include="Pages\MenuA.xaml.cs">
       <DependentUpon>MenuA.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PersonalArea.xaml.cs">
+      <DependentUpon>PersonalArea.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Purchase.xaml.cs">
       <DependentUpon>Purchase.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Reg.xaml.cs">
       <DependentUpon>Reg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WinPerArea.xaml.cs">
+      <DependentUpon>WinPerArea.xaml</DependentUpon>
     </Compile>
     <Compile Include="Partial\PartialPurchase.cs" />
     <Compile Include="Partial\Table_Clothes.cs" />
@@ -173,11 +179,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PersonalArea.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Purchase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Reg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WinPerArea.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

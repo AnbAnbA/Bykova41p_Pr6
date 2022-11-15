@@ -20,19 +20,26 @@ namespace Bykova41p_Pr6.Pages
     /// </summary>
     public partial class MenuA : Page
     {
-        public MenuA()
+        private Table_Users _user;
+        public MenuA(Table_Users User)
         {
             InitializeComponent();
+            _user = User;
         }
 
         private void BTTabUsers_Click(object sender, RoutedEventArgs e)
         {
-            FrameC.frameM.Navigate(new AdminM());
+            FrameC.frameM.Navigate(new AdminM(_user));
         }
 
         private void BTTabOsn_Click(object sender, RoutedEventArgs e)
         {
-            FrameC.frameM.Navigate(new Purchase());
+            FrameC.frameM.Navigate(new Purchase(_user));
+        }
+
+        private void btuserarea_Click(object sender, RoutedEventArgs e)
+        {
+            FrameC.frameM.Navigate(new Pages.PersonalArea(_user));
         }
     }
 }

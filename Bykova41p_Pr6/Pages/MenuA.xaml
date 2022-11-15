@@ -13,6 +13,7 @@
             <Label>Добро пожаловать администратор!</Label>
             <Button x:Name="BTTabUsers" Click="BTTabUsers_Click" Content="Просмотреть таблицу пользователей" Margin="10"></Button>
             <Button x:Name="BTTabOsn" Click="BTTabOsn_Click" Content="Просмотреть основную таблицу" Margin="10"></Button>
+            <Button x:Name="btuserarea" Click="btuserarea_Click" Content="Открыть личный кабинет" Margin="10"></Button>
         </StackPanel>
     </Grid>
 </Page>

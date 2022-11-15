@@ -20,6 +20,7 @@ namespace Bykova41p_Pr6.Pages
     /// </summary>
     public partial class AddP : Page
     {
+        private Table_Users _user;
         Table_Purchase Pur;
         bool flagUpdate = false;
         string path;
@@ -65,7 +66,7 @@ namespace Bykova41p_Pr6.Pages
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            FrameC.frameM.Navigate(new Purchase());
+            FrameC.frameM.Navigate(new Purchase(_user));
         }
 
         private void btncreate_Click(object sender, RoutedEventArgs e)

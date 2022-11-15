@@ -20,7 +20,8 @@ namespace Bykova41p_Pr6.Pages
     /// </summary>
     public partial class Purchase : Page
     {
-        public Purchase()
+        private Table_Users _user;
+        public Purchase(Table_Users User)
         {
             InitializeComponent();
             LVPur.ItemsSource = Base.ES.Table_Purchase.ToList();
@@ -29,7 +30,7 @@ namespace Bykova41p_Pr6.Pages
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            FrameC.frameM.Navigate(new Pages.MenuA());
+            FrameC.frameM.Navigate(new Pages.MenuA(_user));
         }
 
         private void tbMean_Loaded(object sender, RoutedEventArgs e)
@@ -117,7 +118,7 @@ namespace Bykova41p_Pr6.Pages
             Table_Purchase Pur = Base.ES.Table_Purchase.FirstOrDefault(x => x.IdPurchase == index);
             Base.ES.Table_Purchase.Remove(Pur);
             Base.ES.SaveChanges();
-            FrameC.frameM.Navigate(new Purchase());
+            FrameC.frameM.Navigate(new Purchase(_user));
         }
 
         private void btnupd_Click(object sender, RoutedEventArgs e)

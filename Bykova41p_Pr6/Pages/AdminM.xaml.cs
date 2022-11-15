@@ -20,17 +20,17 @@ namespace Bykova41p_Pr6
     /// </summary>
     public partial class AdminM : Page
     {
-        //private Table_Users _user;
-        public AdminM()
+        private Table_Users _user;
+        public AdminM(Table_Users User)
         {
             InitializeComponent();
-            //_user = User;
+            _user = User;
             DGUsers.ItemsSource = Base.ES.Table_Users.ToList();
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            FrameC.frameM.Navigate(new Pages.MenuA());
+            FrameC.frameM.Navigate(new Pages.MenuA(_user));
         }
 
         private void btbackish_Click(object sender, RoutedEventArgs e)

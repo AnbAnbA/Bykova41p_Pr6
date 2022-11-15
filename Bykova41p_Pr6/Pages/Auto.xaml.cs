@@ -39,11 +39,11 @@ namespace Bykova41p_Pr6
                 {
                     case 1:
                         MessageBox.Show("Здравствуйте, администратор " + User.Name);
-                        FrameC.frameM.Navigate(new Pages.MenuA());  // переход в меню администратора
+                        FrameC.frameM.Navigate(new Pages.MenuA(User));  // переход в меню администратора
                         break;
                     case 2:
                         MessageBox.Show("Здравствуйте, пользователь " + User.Name);
-                        FrameC.frameM.Navigate(new CustomerM(User));  // переход в личный кабинет
+                        FrameC.frameM.Navigate(new Pages.PersonalArea(User));  // переход в личный кабинет
                         break;
                 }
             }
