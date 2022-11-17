@@ -50,7 +50,7 @@ namespace Bykova41p_Pr6.Pages
                             {
                                 int pasGegCode = TbPasw.Password.GetHashCode();
                                 Table_Users User = Base.ES.Table_Users.FirstOrDefault(z => z.Login == tbLog.Text);
-                                if (User == null)
+                                if (User == null||tbLog.Text==_user.Login)
                                 {
                                     _user.Login = tbLog.Text;
                                     _user.Pssword = pasGegCode;
