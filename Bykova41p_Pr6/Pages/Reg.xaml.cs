@@ -119,12 +119,12 @@ namespace Bykova41p_Pr6
                 }
                 else
                 {
-                    MessageBox.Show("Имя не должена быть пустой!");
+                    MessageBox.Show("Имя не должено быть пустым!");
                 }
             }
             else
             {
-                MessageBox.Show("Фамилия не должено быть пустым!");
+                MessageBox.Show("Фамилия не должена быть пустой!");
             }
         }
     }

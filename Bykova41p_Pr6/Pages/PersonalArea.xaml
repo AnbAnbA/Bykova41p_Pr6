@@ -10,11 +10,11 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" >
-            <Button Name="btnBack" Width="70" Height="20" HorizontalAlignment="Left" Margin="36,0,0,0" Content="Назад" Click="btnBack_Click" HorizontalContentAlignment="Center" Visibility="Collapsed"/>
+            <Button Name="btnBack" Width="190" Height="20" HorizontalAlignment="Left" Margin="36,0,0,0" Content="Назад к меню администратора" Click="btnBack_Click" HorizontalContentAlignment="Center" Visibility="Collapsed"/>
         </Grid>
 
         <Grid Grid.Row="1" >

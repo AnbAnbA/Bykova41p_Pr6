@@ -31,7 +31,7 @@ namespace Bykova41p_Pr6
             Table_Users User = Base.ES.Table_Users.FirstOrDefault(z => z.Login == TbLogin.Text && z.Pssword == pasGegCode);
             if (User == null)
             {
-                MessageBox.Show("Вы не зарегистрированы");
+                MessageBox.Show("Вы не зарегистрированы! Пройдите регистрацию!");
             }
             else
             {
