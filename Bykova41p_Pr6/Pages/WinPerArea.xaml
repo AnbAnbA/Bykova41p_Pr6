@@ -14,6 +14,12 @@
             <GroupBox Header="Введите фамилию">
                 <TextBox Name="tbSurname"></TextBox>
             </GroupBox>
+            <GroupBox Header="Введите отчество">
+                <TextBox Name="tbPatr"></TextBox>
+            </GroupBox>
+            <GroupBox Header="Выберите дату рождения">
+                <DatePicker Name="DPBirth"></DatePicker>
+            </GroupBox>
             <Button x:Name="redPerdata" Click="redPerdata_Click">Изменить данные</Button>
         </StackPanel>
     </Grid>

@@ -111,6 +111,9 @@
     <Compile Include="Pages\WinPerArea.xaml.cs">
       <DependentUpon>WinPerArea.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\WinPerAreaLogPas.xaml.cs">
+      <DependentUpon>WinPerAreaLogPas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Partial\PartialPurchase.cs" />
     <Compile Include="Partial\Table_Clothes.cs" />
     <Compile Include="Table_Characteristic.cs">
@@ -192,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\WinPerArea.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WinPerAreaLogPas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

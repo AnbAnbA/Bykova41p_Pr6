@@ -1,0 +1,20 @@
+﻿<Window x:Class="Bykova41p_Pr6.Pages.WinPerAreaLogPas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bykova41p_Pr6.Pages"
+        mc:Ignorable="d"
+        Title="WinPerAreaLogPas" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <GroupBox Header="Введите логин">
+                <TextBox Name="tbLog"></TextBox>
+            </GroupBox>
+            <GroupBox Header="Введите пароль">
+                <PasswordBox Name="TbPasw"/>
+            </GroupBox>
+            <Button x:Name="redPerdata" Click="redPerdata_Click">Изменить данные</Button>
+        </StackPanel>
+    </Grid>
+</Window>

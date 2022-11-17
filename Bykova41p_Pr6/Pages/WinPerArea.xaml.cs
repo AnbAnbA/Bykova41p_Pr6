@@ -26,12 +26,16 @@ namespace Bykova41p_Pr6.Pages
             _user = User;
             tbName.Text = _user.Name;
             tbSurname.Text = _user.Surname;
+            tbPatr.Text = _user.Patronymic;
+            DPBirth.Text = _user.DateBirthday.ToString();
         }
 
         private void redPerdata_Click(object sender, RoutedEventArgs e)
         {
             _user.Name=tbName.Text;
             _user.Surname=tbSurname.Text;
+            _user.Patronymic=tbPatr.Text;
+            _user.DateBirthday = (DateTime)DPBirth.SelectedDate;
             Base.ES.SaveChanges();
             this.Close();
         }

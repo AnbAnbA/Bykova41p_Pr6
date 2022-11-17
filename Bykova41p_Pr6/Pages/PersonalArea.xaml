@@ -9,17 +9,37 @@
       Title="PersonalArea">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" >
+            <Button Name="btnBack" Width="70" Height="20" HorizontalAlignment="Left" Margin="36,0,0,0" Content="Назад" Click="btnBack_Click" HorizontalContentAlignment="Center" Visibility="Collapsed"/>
+        </Grid>
+
+        <Grid Grid.Row="1" >
+
         <StackPanel>
-            <Image Height="200" Width="150" Name="imUser" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5" Source="\Res\def.jpg"/>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
-                <TextBlock Margin="0,0,15,0">Фамилия пользователя:</TextBlock>
+            <Image Height="160" Width="150" Name="imUser" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5" Source="\Res\def.jpg"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock Margin="0,0,5,0">Фамилия пользователя:</TextBlock>
                 <TextBlock Name="tbSurname"></TextBlock>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
-                <TextBlock Margin="0,0,15,0">Имя пользователя:</TextBlock>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock Margin="0,0,5,0">Имя пользователя:</TextBlock>
                 <TextBlock Name="tbName"></TextBlock>
             </StackPanel>
-            <Button x:Name="redaUserData" Click="redaUserData_Click">Изменить личные данные</Button>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock Margin="0,0,5,0">Отчество пользователя:</TextBlock>
+                <TextBlock Name="tbPatr"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock Margin="0,0,5,0">Дата рождения пользователя:</TextBlock>
+                <TextBlock Name="DPBirth"></TextBlock>
+            </StackPanel>
+            <Button x:Name="redaUserData" Click="redaUserData_Click" Margin="5">Изменить личные данные</Button>
+            <Button x:Name="redlogpar" Click="redlogpar_Click" Margin="5">Изменить логин и пароль</Button>
         </StackPanel>
+        </Grid>
     </Grid>
 </Page>

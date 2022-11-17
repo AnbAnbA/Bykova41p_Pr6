@@ -25,9 +25,14 @@ namespace Bykova41p_Pr6.Pages
         {
             InitializeComponent();
             this._user = User;
+            if (_user.IdRole == 1) 
+            {
+                btnBack.Visibility = Visibility.Visible;
+            }
             tbName.Text = _user.Name;
             tbSurname.Text = _user.Surname;
-
+            tbPatr.Text = _user.Patronymic;
+            DPBirth.Text = _user.DateBirthday.ToString("dd.MM.yyyy года");
         }
 
         private void redaUserData_Click(object sender, RoutedEventArgs e)
@@ -35,6 +40,18 @@ namespace Bykova41p_Pr6.Pages
             WinPerArea winPerArea = new WinPerArea(_user);
             winPerArea.ShowDialog();
             FrameC.frameM.Navigate(new PersonalArea(_user));
+        }
+
+        private void redlogpar_Click(object sender, RoutedEventArgs e)
+        {
+            WinPerAreaLogPas winPerArealogpas = new WinPerAreaLogPas(_user);
+            winPerArealogpas.ShowDialog();
+            FrameC.frameM.Navigate(new PersonalArea(_user));
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            FrameC.frameM.Navigate(new Pages.MenuA(_user));  // переход в меню администратора
         }
     }
 }
