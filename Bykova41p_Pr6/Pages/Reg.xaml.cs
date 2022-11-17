@@ -43,54 +43,89 @@ namespace Bykova41p_Pr6
             Regex cs = new Regex("([!@#$%^&*()_+=])");
             Regex os = new Regex("(.+){8,}");
 
-            if (B.IsMatch(TbPasw.Password) == true)
+            if (TbSurn.Text != "")
             {
-                if (b.IsMatch(TbPasw.Password) == true)
+                if (TbName.Text != "")
                 {
-                    if (ch.IsMatch(TbPasw.Password) == true)
+                    if (TbPatr.Text != "")
                     {
-                        if (cs.IsMatch(TbPasw.Password) == true)
+                        if (DPBirth.Text != "")
                         {
-                            if (os.IsMatch(TbPasw.Password) == true)
+                            if (CbGender.Text!= "")
                             {
-                                int pasGegCode = TbPasw.Password.GetHashCode();
-                                Table_Users User = Base.ES.Table_Users.FirstOrDefault(z => z.Login == TbLog.Text);
-                                if (User == null)
+                                if (B.IsMatch(TbPasw.Password) == true)
                                 {
-                                    Table_Users UserRez = new Table_Users() { Name = TbName.Text, Surname = TbSurn.Text, Patronymic = TbPatr.Text, DateBirthday = (DateTime)DPBirth.SelectedDate, IdGender = CbGender.SelectedIndex + 1, Login = TbLog.Text, Pssword = pasGegCode, IdRole = 2 };
-                                    Base.ES.Table_Users.Add(UserRez);
-                                    Base.ES.SaveChanges();
-                                    MessageBox.Show("Вы зарегистрированы");
+                                    if (b.IsMatch(TbPasw.Password) == true)
+                                    {
+                                        if (ch.IsMatch(TbPasw.Password) == true)
+                                        {
+                                            if (cs.IsMatch(TbPasw.Password) == true)
+                                            {
+                                                if (os.IsMatch(TbPasw.Password) == true)
+                                                {
+                                                    int pasGegCode = TbPasw.Password.GetHashCode();
+                                                    Table_Users User = Base.ES.Table_Users.FirstOrDefault(z => z.Login == TbLog.Text);
+                                                    if (User == null)
+                                                    {
+                                                        Table_Users UserRez = new Table_Users() { Name = TbName.Text, Surname = TbSurn.Text, Patronymic = TbPatr.Text, DateBirthday = (DateTime)DPBirth.SelectedDate, IdGender = CbGender.SelectedIndex + 1, Login = TbLog.Text, Pssword = pasGegCode, IdRole = 2 };
+                                                        Base.ES.Table_Users.Add(UserRez);
+                                                        Base.ES.SaveChanges();
+                                                        MessageBox.Show("Вы зарегистрированы");
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Такой логин уже существует! Придумайте другой логин!");
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Длина пароля должна быть не менее 8 символов");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("В пароле должен быть хотя бы один специальный символ (!@#$%^&*()_+=)");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Пароль должен иметь хотя бы 2 цифры");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("В пароле должно быть не менее 3 строчных латинских символов");
+                                    }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Такой логин уже существует! Придумайте другой логин!");
+                                    MessageBox.Show("Пароль должен иметь хотя бы 1 заглавную латинскую букву");
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Длина пароля должна быть не менее 8 символов");
+                                MessageBox.Show("Пол не должен быть пустым!");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("В пароле должен быть хотя бы один специальный символ (!@#$%^&*()_+=)");
+                            MessageBox.Show("День рождения не должен быть пустым!");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Пароль должен иметь хотя бы 2 цифры");
+                        MessageBox.Show("Отчество не должено быть пустым!");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("В пароле должно быть не менее 3 строчных латинских символов");
+                    MessageBox.Show("Имя не должена быть пустой!");
                 }
             }
-            else 
+            else
             {
-                MessageBox.Show("Пароль должен иметь хотя бы 1 заглавную латинскую букву");
-            }  
+                MessageBox.Show("Фамилия не должено быть пустым!");
+            }
         }
     }
 }

@@ -38,57 +38,68 @@ namespace Bykova41p_Pr6.Pages
             Regex cs = new Regex("([!@#$%^&*()_+=])");
             Regex os = new Regex("(.+){8,}");
 
-            if (B.IsMatch(TbPasw.Password) == true)
+            if (tbLog.Text != "")
             {
-                if (b.IsMatch(TbPasw.Password) == true)
+                if (TbPasw.Password != "")
                 {
-                    if (ch.IsMatch(TbPasw.Password) == true)
+                    if (B.IsMatch(TbPasw.Password) == true)
                     {
-                        if (cs.IsMatch(TbPasw.Password) == true)
+                        if (b.IsMatch(TbPasw.Password) == true)
                         {
-                            if (os.IsMatch(TbPasw.Password) == true)
+                            if (ch.IsMatch(TbPasw.Password) == true)
                             {
-                                int pasGegCode = TbPasw.Password.GetHashCode();
-                                Table_Users User = Base.ES.Table_Users.FirstOrDefault(z => z.Login == tbLog.Text);
-                                if (User == null||tbLog.Text==_user.Login)
+                                if (cs.IsMatch(TbPasw.Password) == true)
                                 {
-                                    _user.Login = tbLog.Text;
-                                    _user.Pssword = pasGegCode;
-                                    Base.ES.SaveChanges();
-                                    this.Close();
+                                    if (os.IsMatch(TbPasw.Password) == true)
+                                    {
+                                        int pasGegCode = TbPasw.Password.GetHashCode();
+                                        Table_Users User = Base.ES.Table_Users.FirstOrDefault(z => z.Login == tbLog.Text);
+                                        if (User == null || tbLog.Text == _user.Login)
+                                        {
+                                            _user.Login = tbLog.Text;
+                                            _user.Pssword = pasGegCode;
+                                            Base.ES.SaveChanges();
+                                            this.Close();
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Такой логин уже существует! Придумайте другой логин!");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Длина пароля должна быть не менее 8 символов");
+                                    }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Такой логин уже существует! Придумайте другой логин!");
+                                    MessageBox.Show("В пароле должен быть хотя бы один специальный символ (!@#$%^&*()_+=)");
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Длина пароля должна быть не менее 8 символов");
+                                MessageBox.Show("Пароль должен иметь хотя бы 2 цифры");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("В пароле должен быть хотя бы один специальный символ (!@#$%^&*()_+=)");
+                            MessageBox.Show("В пароле должно быть не менее 3 строчных латинских символов");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Пароль должен иметь хотя бы 2 цифры");
+                        MessageBox.Show("Пароль должен иметь хотя бы 1 заглавную латинскую букву");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("В пароле должно быть не менее 3 строчных латинских символов");
+                    MessageBox.Show("Пароль не может быть пустым!");
                 }
             }
-            else
+            else 
             {
-                MessageBox.Show("Пароль должен иметь хотя бы 1 заглавную латинскую букву");
+                MessageBox.Show("Логин не может быть пустым!");
             }
-
-
-
         }
     }
 }
