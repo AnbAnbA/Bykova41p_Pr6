@@ -114,8 +114,8 @@
     <Compile Include="Pages\WinPerAreaLogPas.xaml.cs">
       <DependentUpon>WinPerAreaLogPas.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Partial\PartialPurchase.cs" />
-    <Compile Include="Partial\Table_Clothes.cs" />
+    <Compile Include="PartialPurchase.cs" />
+    <Compile Include="PartialClothes.cs" />
     <Compile Include="Table_Characteristic.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bykova41p_Pr6.Partial
 {
-    partial class Table_Clothes
+    partial class PartialClothes
     {
         public string cloth 
         {
