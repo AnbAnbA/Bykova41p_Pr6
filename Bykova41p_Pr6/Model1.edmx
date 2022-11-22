@@ -52,7 +52,7 @@
           <Key>
             <PropertyRef Name="idPhot" />
           </Key>
-          <Property Name="idPhot" Type="int" Nullable="false" />
+          <Property Name="idPhot" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idUser" Type="int" Nullable="false" />
           <Property Name="path" Type="nvarchar(max)" />
           <Property Name="Binpath" Type="varbinary(max)" />
@@ -437,7 +437,7 @@
           <Key>
             <PropertyRef Name="idPhot" />
           </Key>
-          <Property Name="idPhot" Type="Int32" Nullable="false" />
+          <Property Name="idPhot" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idUser" Type="Int32" Nullable="false" />
           <Property Name="path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Binpath" Type="Binary" MaxLength="Max" FixedLength="false" />

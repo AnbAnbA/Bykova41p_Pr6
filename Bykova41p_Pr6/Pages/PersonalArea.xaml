@@ -49,11 +49,11 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
-            <StackPanel Name="spgal" Visibility="Visible">
+            <StackPanel Name="spgal" Visibility="Collapsed">
                 <StackPanel Orientation="Horizontal">
-                    <Button Name="Back" Click="Back_Click" IsEnabled="False">Назад</Button>
+                    <Button Name="btback" Click="btback_Click" IsEnabled="False">Назад</Button>
                     <Image Width="200" Height="200" Name="imgGallery"></Image>
-                    <Button Name="Next" Click="Next_Click">Вперед</Button>
+                    <Button Name="btnext" Click="btnext_Click">Вперед</Button>
                 </StackPanel>
                 <Button Width="175" HorizontalAlignment="Left" Margin="50,10,0,0" Name="btbackph" Click="btbackph_Click">Изменить фото на выбранное</Button>
             </StackPanel>

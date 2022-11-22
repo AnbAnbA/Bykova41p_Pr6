@@ -83,8 +83,8 @@ namespace Bykova41p_Pr6.Pages
 
         private void addph_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
+            //try
+            //{
                Table_Phot u = new Table_Phot();
                 u.idUser= _user.IdUsers;
                 OpenFileDialog OFD = new OpenFileDialog();
@@ -98,11 +98,11 @@ namespace Bykova41p_Pr6.Pages
                 Base.ES.SaveChanges();
                 MessageBox.Show("Фото добавлено");
                 FrameC.frameM.Navigate(new PersonalArea(_user));
-            }
-            catch
-            {
-                MessageBox.Show("Что-то пошло не так");
-            }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Что-то пошло не так");
+            //}
         }
 
         private void addmoreph_Click(object sender, RoutedEventArgs e)
@@ -133,15 +133,64 @@ namespace Bykova41p_Pr6.Pages
                 MessageBox.Show("Что-то пошло не так");
             }
         }
-
+        int n = 0;
         private void showgallery_Click(object sender, RoutedEventArgs e)
         {
+            spgal.Visibility= Visibility.Visible;
+            List<Table_Phot> u = Base.ES.Table_Phot.Where(x => x.idUser == _user.IdUsers).ToList();
+            if (u != null)  // если объект не пустой, начинает переводить байтовый массив в изображение
+            {
 
+                byte[] Bar = u[n].Binpath;   // считываем изображение из базы (считываем байтовый массив двоичных данных)
+                showImage(Bar, imgGallery);  // отображаем картинку
+            }
         }
 
         private void btbackph_Click(object sender, RoutedEventArgs e)
         {
+            List<Table_Phot> u = Base.ES.Table_Phot.Where(x => x.idUser == _user.IdUsers).ToList();
+            byte[] Bar = u[n].Binpath;
+            showImage(Bar, imUser);
+        }
 
+        private void btnext_Click(object sender, RoutedEventArgs e)
+        {
+            List<Table_Phot> u = Base.ES.Table_Phot.Where(x => x.idUser == _user.IdUsers).ToList();
+            n++;
+            if (btback.IsEnabled == false)
+            {
+                btback.IsEnabled = true;
+            }
+            if (u != null) 
+            {
+
+                byte[] Bar = u[n].Binpath;   
+                showImage(Bar, imgGallery);
+            }
+            if (n == u.Count - 1)
+            {
+                btnext.IsEnabled = false;
+            }
+        }
+
+        private void btback_Click(object sender, RoutedEventArgs e)
+        {
+            List<Table_Phot> u = Base.ES.Table_Phot.Where(x => x.idUser == _user.IdUsers).ToList();
+            n--;
+            if (btnext.IsEnabled == false)
+            {
+                btnext.IsEnabled = true;
+            }
+            if (u != null)
+            {
+                byte[] Bar = u[n].Binpath;
+                BitmapImage BI = new BitmapImage();
+                showImage(Bar, imgGallery);
+            }
+            if (n == 0)
+            {
+                btback.IsEnabled = false;
+            }
         }
     }
 }
