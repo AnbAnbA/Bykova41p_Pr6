@@ -22,12 +22,10 @@ namespace Bykova41p_Pr6
     
         public int IdProducts { get; set; }
         public int IdPurchase { get; set; }
-        public Nullable<int> IdClothes { get; set; }
-        public Nullable<int> IdShoes { get; set; }
+        public Nullable<int> IdNom { get; set; }
         public Nullable<int> Amount { get; set; }
     
-        public virtual Table_Clothes Table_Clothes { get; set; }
-        public virtual Table_Shoes Table_Shoes { get; set; }
+        public virtual Table_Nomenclature Table_Nomenclature { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Table_Purchase> Table_Purchase { get; set; }
     }

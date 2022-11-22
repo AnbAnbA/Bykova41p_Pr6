@@ -31,9 +31,9 @@ namespace Bykova41p_Pr6.Pages
             //cmbClothes.SelectedValuePath = "idClothes";
             //cmbClothes.DisplayMemberPath = "NameClothes";
 
-            lbClothes.ItemsSource = Base.ES.Table_Clothes.ToList();
-            lbClothes.SelectedValuePath = "IdClothes";
-            lbClothes.DisplayMemberPath = "NameClothes";
+            lbClothes.ItemsSource = Base.ES.Table_Nomenclature.ToList();
+            lbClothes.SelectedValuePath = "idNomenclature";
+            lbClothes.DisplayMemberPath = "NameNom";
 
             //lbFeed.ItemsSource = BaseClass.tBE.FeedTable.ToList();
         }
@@ -48,10 +48,10 @@ namespace Bykova41p_Pr6.Pages
             tbName.Text = Pur.Table_Customer.NameCustomer;
             //cmbClothes.SelectedIndex = (int)Pur.Table_Products.IdClothes - 1;
             dpDatePur.SelectedDate = Pur.DatePurchase;
-            List<Table_Products> TP = Base.ES.Table_Products.Where(x => x.IdClothes == Pur.Table_Products.IdClothes).ToList();
+            List<Table_Products> TP = Base.ES.Table_Products.Where(x => x.IdNom == Pur.Table_Products.IdNom).ToList();
             foreach (Table_Products tp in TP) 
             {
-                if (TP.FirstOrDefault(x => x.IdClothes == tp.IdClothes) != null)
+                if (TP.FirstOrDefault(x => x.IdNom == tp.IdNom) != null)
                 {
                     lbClothes.SelectedItems.Add(tp);
                 }
@@ -104,12 +104,12 @@ namespace Bykova41p_Pr6.Pages
                     }
                   }
 
-                   foreach (Table_Clothes t in lbClothes.SelectedItems)
+                   foreach (Table_Nomenclature t in lbClothes.SelectedItems)
                    {
                     Table_Products TPT = new Table_Products()  
                     {
                         IdProducts = Pur.IdProducts,
-                        IdClothes = t.IdClothes
+                        IdNom = t.idNomenclature
                     };
                     Base.ES.Table_Products.Add(TPT);
                    }

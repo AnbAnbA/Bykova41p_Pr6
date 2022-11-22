@@ -12,26 +12,18 @@ namespace Bykova41p_Pr6
     using System;
     using System.Collections.Generic;
     
-    public partial class Table_Clothes
+    public partial class Table_VidNom
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Table_Clothes()
+        public Table_VidNom()
         {
-            this.Table_Meaning = new HashSet<Table_Meaning>();
-            this.Table_Products = new HashSet<Table_Products>();
+            this.Table_Nomenclature = new HashSet<Table_Nomenclature>();
         }
     
-        public int IdClothes { get; set; }
-        public string NameClothes { get; set; }
-        public decimal PriceClothes { get; set; }
-        public string ImageClothes { get; set; }
-        public int IdGenderClothes { get; set; }
-        public int IdMeaningClothes { get; set; }
+        public int idVidNom { get; set; }
+        public string vidNom { get; set; }
     
-        public virtual Table_Gender Table_Gender { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Table_Meaning> Table_Meaning { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Table_Products> Table_Products { get; set; }
+        public virtual ICollection<Table_Nomenclature> Table_Nomenclature { get; set; }
     }
 }

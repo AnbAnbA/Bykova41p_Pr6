@@ -38,12 +38,12 @@ namespace Bykova41p_Pr6.Pages
             TextBlock tb = (TextBlock)sender;
             int index = Convert.ToInt32(tb.Uid);
             List<Table_Products> TP = Base.ES.Table_Products.Where(x => x.IdProducts == index).ToList();
-            List<Table_Meaning> TM = Base.ES.Table_Meaning.Where(x => x.IdClothes == index).ToList();
+            List<Table_Meaning> TM = Base.ES.Table_Meaning.Where(x => x.IdNom == index).ToList();
             string str = "";
 
             foreach (Table_Products tp in TP) 
             {
-                str+=tp.Table_Clothes.NameClothes+", ";
+                str+=tp.Table_Nomenclature.NameNom+", ";
                 foreach (Table_Meaning tm in TM)
                 {
                     str += tm.Table_Characteristic.Characteristic + ": " + tm.Meaning + ", ";
@@ -59,43 +59,43 @@ namespace Bykova41p_Pr6.Pages
             string str = "";
             foreach (Table_Products tp in TP) 
             {
-                str += tp.Table_Clothes.PriceClothes;
+                str += tp.Table_Nomenclature.PriceNom;
             }
             tb.Text = "Цена: "+str.Substring(0, str.Length);
         }
 
         private void tbMeansh_Loaded(object sender, RoutedEventArgs e)
         {
-            TextBlock tb = (TextBlock)sender;
-            int index = Convert.ToInt32(tb.Uid);
-            List<Table_Products> TP = Base.ES.Table_Products.Where(x => x.IdProducts == index).ToList();
-            List<Table_Meaning> TM = Base.ES.Table_Meaning.Where(x => x.IdClothes == index).ToList();
-            string str = "";
+            //TextBlock tb = (TextBlock)sender;
+            //int index = Convert.ToInt32(tb.Uid);
+            //List<Table_Products> TP = Base.ES.Table_Products.Where(x => x.IdProducts == index).ToList();
+            //List<Table_Meaning> TM = Base.ES.Table_Meaning.Where(x => x.IdClothes == index).ToList();
+            //string str = "";
 
-            foreach (Table_Products tp in TP)
-            {
-                str += tp.Table_Shoes.NameShoes + ", ";
-                foreach (Table_Meaning tm in TM)
-                {
-                    str += tm.Table_Characteristic.Characteristic + ": " + tm.Meaning + ", ";
-                }
-            }
-            tb.Text = str.Substring(0, str.Length);
+            //foreach (Table_Products tp in TP)
+            //{
+            //    str += tp.Table_Shoes.NameShoes + ", ";
+            //    foreach (Table_Meaning tm in TM)
+            //    {
+            //        str += tm.Table_Characteristic.Characteristic + ": " + tm.Meaning + ", ";
+            //    }
+            //}
+            //tb.Text = str.Substring(0, str.Length);
         }
 
         private void tbPriceSh_Loaded(object sender, RoutedEventArgs e)
         {
-            TextBlock tb = (TextBlock)sender;
-            int index = Convert.ToInt32(tb.Uid);
-            List<Table_Products> TP = Base.ES.Table_Products.Where(x => x.IdProducts == index).ToList();
+            //TextBlock tb = (TextBlock)sender;
+            //int index = Convert.ToInt32(tb.Uid);
+            //List<Table_Products> TP = Base.ES.Table_Products.Where(x => x.IdProducts == index).ToList();
 
-            string str = "";
+            //string str = "";
 
-            foreach (Table_Products tp in TP)
-            {
-                str += tp.Table_Shoes.PriceShoes;
-            }
-            tb.Text = "Цена: " + str.Substring(0, str.Length);
+            //foreach (Table_Products tp in TP)
+            //{
+            //    str += tp.Table_Shoes.PriceShoes;
+            //}
+            //tb.Text = "Цена: " + str.Substring(0, str.Length);
         }
 
         private void tbtotalPur_Loaded(object sender, RoutedEventArgs e)
@@ -106,7 +106,7 @@ namespace Bykova41p_Pr6.Pages
             double total = 0;
             foreach (Table_Products tp in TP) 
             {
-                total += Convert.ToDouble((tp.Table_Clothes.PriceClothes * tp.Amount) + tp.Table_Shoes.PriceShoes * tp.Amount);
+                total += Convert.ToDouble((tp.Table_Nomenclature.PriceNom * tp.Amount) );
             }
             tb.Text = "Итог: " + total.ToString() + " руб.";
         }

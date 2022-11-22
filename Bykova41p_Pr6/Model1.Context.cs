@@ -26,15 +26,15 @@ namespace Bykova41p_Pr6
         }
     
         public virtual DbSet<Table_Characteristic> Table_Characteristic { get; set; }
-        public virtual DbSet<Table_Clothes> Table_Clothes { get; set; }
         public virtual DbSet<Table_Customer> Table_Customer { get; set; }
         public virtual DbSet<Table_Gender> Table_Gender { get; set; }
         public virtual DbSet<Table_Meaning> Table_Meaning { get; set; }
+        public virtual DbSet<Table_Nomenclature> Table_Nomenclature { get; set; }
         public virtual DbSet<Table_Phot> Table_Phot { get; set; }
         public virtual DbSet<Table_Products> Table_Products { get; set; }
         public virtual DbSet<Table_Purchase> Table_Purchase { get; set; }
         public virtual DbSet<Table_Role> Table_Role { get; set; }
-        public virtual DbSet<Table_Shoes> Table_Shoes { get; set; }
         public virtual DbSet<Table_Users> Table_Users { get; set; }
+        public virtual DbSet<Table_VidNom> Table_VidNom { get; set; }
     }
 }

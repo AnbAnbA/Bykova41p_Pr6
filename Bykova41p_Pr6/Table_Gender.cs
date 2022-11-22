@@ -17,8 +17,7 @@ namespace Bykova41p_Pr6
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Table_Gender()
         {
-            this.Table_Clothes = new HashSet<Table_Clothes>();
-            this.Table_Shoes = new HashSet<Table_Shoes>();
+            this.Table_Nomenclature = new HashSet<Table_Nomenclature>();
             this.Table_Users = new HashSet<Table_Users>();
         }
     
@@ -26,9 +25,7 @@ namespace Bykova41p_Pr6
         public string gender { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Table_Clothes> Table_Clothes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Table_Shoes> Table_Shoes { get; set; }
+        public virtual ICollection<Table_Nomenclature> Table_Nomenclature { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Table_Users> Table_Users { get; set; }
     }

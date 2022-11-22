@@ -120,9 +120,6 @@
     <Compile Include="Table_Characteristic.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Table_Clothes.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Table_Customer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -130,6 +127,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Table_Meaning.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Table_Nomenclature.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Table_Phot.cs">
@@ -144,10 +144,10 @@
     <Compile Include="Table_Role.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Table_Shoes.cs">
+    <Compile Include="Table_Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Table_Users.cs">
+    <Compile Include="Table_VidNom.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Page Include="Pages\AddP.xaml">

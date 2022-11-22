@@ -12,17 +12,6 @@
           <Property Name="IdCharacteristic" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Characteristic" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Table_Clothes">
-          <Key>
-            <PropertyRef Name="IdClothes" />
-          </Key>
-          <Property Name="IdClothes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameClothes" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="PriceClothes" Type="money" Nullable="false" />
-          <Property Name="ImageClothes" Type="nvarchar(max)" />
-          <Property Name="IdGenderClothes" Type="int" Nullable="false" />
-          <Property Name="IdMeaningClothes" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Table_Customer">
           <Key>
             <PropertyRef Name="IdCustomer" />
@@ -43,10 +32,21 @@
             <PropertyRef Name="IdMeaning" />
           </Key>
           <Property Name="IdMeaning" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdClothes" Type="int" />
-          <Property Name="IdShoes" Type="int" />
+          <Property Name="IdNom" Type="int" />
           <Property Name="IdCharacteristic" Type="int" Nullable="false" />
           <Property Name="Meaning" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Nomenclature">
+          <Key>
+            <PropertyRef Name="idNomenclature" />
+          </Key>
+          <Property Name="idNomenclature" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameNom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PriceNom" Type="money" Nullable="false" />
+          <Property Name="ImageNom" Type="nvarchar(max)" />
+          <Property Name="idGenderNom" Type="int" Nullable="false" />
+          <Property Name="idMeaningNom" Type="int" Nullable="false" />
+          <Property Name="vidNom" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Table_Phot">
           <Key>
@@ -63,8 +63,7 @@
           </Key>
           <Property Name="IdProducts" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdPurchase" Type="int" Nullable="false" />
-          <Property Name="IdClothes" Type="int" />
-          <Property Name="IdShoes" Type="int" />
+          <Property Name="IdNom" Type="int" />
           <Property Name="Amount" Type="int" />
         </EntityType>
         <EntityType Name="Table_Purchase">
@@ -84,17 +83,6 @@
           <Property Name="IdRole" Type="int" Nullable="false" />
           <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Table_Shoes">
-          <Key>
-            <PropertyRef Name="IdShoes" />
-          </Key>
-          <Property Name="IdShoes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameShoes" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="PriceShoes" Type="money" Nullable="false" />
-          <Property Name="ImageShoes" Type="nvarchar(max)" />
-          <Property Name="IdGenderShoes" Type="int" Nullable="false" />
-          <Property Name="IdMeaningShoes" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Table_Users">
           <Key>
             <PropertyRef Name="IdUsers" />
@@ -109,18 +97,13 @@
           <Property Name="Pssword" Type="int" Nullable="false" />
           <Property Name="IdRole" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Table_Clothes_Table_Gender">
-          <End Role="Table_Gender" Type="Self.Table_Gender" Multiplicity="1" />
-          <End Role="Table_Clothes" Type="Self.Table_Clothes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Table_Gender">
-              <PropertyRef Name="IdGender" />
-            </Principal>
-            <Dependent Role="Table_Clothes">
-              <PropertyRef Name="IdGenderClothes" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="Table_VidNom">
+          <Key>
+            <PropertyRef Name="idVidNom" />
+          </Key>
+          <Property Name="idVidNom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vidNom" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Table_Meaning_Table_Characteristic">
           <End Role="Table_Characteristic" Type="Self.Table_Characteristic" Multiplicity="1" />
           <End Role="Table_Meaning" Type="Self.Table_Meaning" Multiplicity="*" />
@@ -133,27 +116,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Table_Meaning_Table_Clothes">
-          <End Role="Table_Clothes" Type="Self.Table_Clothes" Multiplicity="0..1" />
+        <Association Name="FK_Table_Meaning_Table_Nomenclature">
+          <End Role="Table_Nomenclature" Type="Self.Table_Nomenclature" Multiplicity="0..1" />
           <End Role="Table_Meaning" Type="Self.Table_Meaning" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Table_Clothes">
-              <PropertyRef Name="IdClothes" />
+            <Principal Role="Table_Nomenclature">
+              <PropertyRef Name="idNomenclature" />
             </Principal>
             <Dependent Role="Table_Meaning">
-              <PropertyRef Name="IdClothes" />
+              <PropertyRef Name="IdNom" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Table_Meaning_Table_Shoes">
-          <End Role="Table_Shoes" Type="Self.Table_Shoes" Multiplicity="0..1" />
-          <End Role="Table_Meaning" Type="Self.Table_Meaning" Multiplicity="*" />
+        <Association Name="FK_Table_Nomenclature_Table_Gender">
+          <End Role="Table_Gender" Type="Self.Table_Gender" Multiplicity="1" />
+          <End Role="Table_Nomenclature" Type="Self.Table_Nomenclature" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Table_Shoes">
-              <PropertyRef Name="IdShoes" />
+            <Principal Role="Table_Gender">
+              <PropertyRef Name="IdGender" />
             </Principal>
-            <Dependent Role="Table_Meaning">
-              <PropertyRef Name="IdShoes" />
+            <Dependent Role="Table_Nomenclature">
+              <PropertyRef Name="idGenderNom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Nomenclature_Table_VidNom">
+          <End Role="Table_VidNom" Type="Self.Table_VidNom" Multiplicity="1" />
+          <End Role="Table_Nomenclature" Type="Self.Table_Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_VidNom">
+              <PropertyRef Name="idVidNom" />
+            </Principal>
+            <Dependent Role="Table_Nomenclature">
+              <PropertyRef Name="vidNom" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -169,27 +164,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Table_Products_Table_Products">
-          <End Role="Table_Clothes" Type="Self.Table_Clothes" Multiplicity="0..1" />
+        <Association Name="FK_Table_Products_Table_Nomenclature">
+          <End Role="Table_Nomenclature" Type="Self.Table_Nomenclature" Multiplicity="0..1" />
           <End Role="Table_Products" Type="Self.Table_Products" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Table_Clothes">
-              <PropertyRef Name="IdClothes" />
+            <Principal Role="Table_Nomenclature">
+              <PropertyRef Name="idNomenclature" />
             </Principal>
             <Dependent Role="Table_Products">
-              <PropertyRef Name="IdClothes" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_Products_Table_Shoes">
-          <End Role="Table_Shoes" Type="Self.Table_Shoes" Multiplicity="0..1" />
-          <End Role="Table_Products" Type="Self.Table_Products" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Table_Shoes">
-              <PropertyRef Name="IdShoes" />
-            </Principal>
-            <Dependent Role="Table_Products">
-              <PropertyRef Name="IdShoes" />
+              <PropertyRef Name="IdNom" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -206,7 +189,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Table_Purchase_Table_Products1">
-          <End Role="Table_Products" Type="Self.Table_Products" Multiplicity="1" />
+          <End Role="Table_Products" Type="Self.Table_Products" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Table_Purchase" Type="Self.Table_Purchase" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Table_Products">
@@ -214,18 +199,6 @@
             </Principal>
             <Dependent Role="Table_Purchase">
               <PropertyRef Name="IdProducts" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_Shoes_Table_Gender">
-          <End Role="Table_Gender" Type="Self.Table_Gender" Multiplicity="1" />
-          <End Role="Table_Shoes" Type="Self.Table_Shoes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Table_Gender">
-              <PropertyRef Name="IdGender" />
-            </Principal>
-            <Dependent Role="Table_Shoes">
-              <PropertyRef Name="IdGenderShoes" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -255,42 +228,38 @@
         </Association>
         <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="Table_Characteristic" EntityType="Self.Table_Characteristic" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Table_Clothes" EntityType="Self.Table_Clothes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Customer" EntityType="Self.Table_Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Gender" EntityType="Self.Table_Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Meaning" EntityType="Self.Table_Meaning" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Nomenclature" EntityType="Self.Table_Nomenclature" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Phot" EntityType="Self.Table_Phot" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Products" EntityType="Self.Table_Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Purchase" EntityType="Self.Table_Purchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Role" EntityType="Self.Table_Role" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Table_Shoes" EntityType="Self.Table_Shoes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Users" EntityType="Self.Table_Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Table_Clothes_Table_Gender" Association="Self.FK_Table_Clothes_Table_Gender">
-            <End Role="Table_Gender" EntitySet="Table_Gender" />
-            <End Role="Table_Clothes" EntitySet="Table_Clothes" />
-          </AssociationSet>
+          <EntitySet Name="Table_VidNom" EntityType="Self.Table_VidNom" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Table_Meaning_Table_Characteristic" Association="Self.FK_Table_Meaning_Table_Characteristic">
             <End Role="Table_Characteristic" EntitySet="Table_Characteristic" />
             <End Role="Table_Meaning" EntitySet="Table_Meaning" />
           </AssociationSet>
-          <AssociationSet Name="FK_Table_Meaning_Table_Clothes" Association="Self.FK_Table_Meaning_Table_Clothes">
-            <End Role="Table_Clothes" EntitySet="Table_Clothes" />
+          <AssociationSet Name="FK_Table_Meaning_Table_Nomenclature" Association="Self.FK_Table_Meaning_Table_Nomenclature">
+            <End Role="Table_Nomenclature" EntitySet="Table_Nomenclature" />
             <End Role="Table_Meaning" EntitySet="Table_Meaning" />
           </AssociationSet>
-          <AssociationSet Name="FK_Table_Meaning_Table_Shoes" Association="Self.FK_Table_Meaning_Table_Shoes">
-            <End Role="Table_Shoes" EntitySet="Table_Shoes" />
-            <End Role="Table_Meaning" EntitySet="Table_Meaning" />
+          <AssociationSet Name="FK_Table_Nomenclature_Table_Gender" Association="Self.FK_Table_Nomenclature_Table_Gender">
+            <End Role="Table_Gender" EntitySet="Table_Gender" />
+            <End Role="Table_Nomenclature" EntitySet="Table_Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Nomenclature_Table_VidNom" Association="Self.FK_Table_Nomenclature_Table_VidNom">
+            <End Role="Table_VidNom" EntitySet="Table_VidNom" />
+            <End Role="Table_Nomenclature" EntitySet="Table_Nomenclature" />
           </AssociationSet>
           <AssociationSet Name="FK_Table_Phot_Table_Users" Association="Self.FK_Table_Phot_Table_Users">
             <End Role="Table_Users" EntitySet="Table_Users" />
             <End Role="Table_Phot" EntitySet="Table_Phot" />
           </AssociationSet>
-          <AssociationSet Name="FK_Table_Products_Table_Products" Association="Self.FK_Table_Products_Table_Products">
-            <End Role="Table_Clothes" EntitySet="Table_Clothes" />
-            <End Role="Table_Products" EntitySet="Table_Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_Products_Table_Shoes" Association="Self.FK_Table_Products_Table_Shoes">
-            <End Role="Table_Shoes" EntitySet="Table_Shoes" />
+          <AssociationSet Name="FK_Table_Products_Table_Nomenclature" Association="Self.FK_Table_Products_Table_Nomenclature">
+            <End Role="Table_Nomenclature" EntitySet="Table_Nomenclature" />
             <End Role="Table_Products" EntitySet="Table_Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Table_Purchase_Table_Customer" Association="Self.FK_Table_Purchase_Table_Customer">
@@ -300,10 +269,6 @@
           <AssociationSet Name="FK_Table_Purchase_Table_Products1" Association="Self.FK_Table_Purchase_Table_Products1">
             <End Role="Table_Products" EntitySet="Table_Products" />
             <End Role="Table_Purchase" EntitySet="Table_Purchase" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_Shoes_Table_Gender" Association="Self.FK_Table_Shoes_Table_Gender">
-            <End Role="Table_Gender" EntitySet="Table_Gender" />
-            <End Role="Table_Shoes" EntitySet="Table_Shoes" />
           </AssociationSet>
           <AssociationSet Name="FK_Table_Users_Table_Gender" Association="Self.FK_Table_Users_Table_Gender">
             <End Role="Table_Gender" EntitySet="Table_Gender" />
@@ -320,55 +285,47 @@
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Table_Characteristic" EntityType="Model.Table_Characteristic" />
-          <EntitySet Name="Table_Clothes" EntityType="Model.Table_Clothes" />
           <EntitySet Name="Table_Customer" EntityType="Model.Table_Customer" />
           <EntitySet Name="Table_Gender" EntityType="Model.Table_Gender" />
           <EntitySet Name="Table_Meaning" EntityType="Model.Table_Meaning" />
+          <EntitySet Name="Table_Nomenclature" EntityType="Model.Table_Nomenclature" />
           <EntitySet Name="Table_Phot" EntityType="Model.Table_Phot" />
           <EntitySet Name="Table_Products" EntityType="Model.Table_Products" />
           <EntitySet Name="Table_Purchase" EntityType="Model.Table_Purchase" />
           <EntitySet Name="Table_Role" EntityType="Model.Table_Role" />
-          <EntitySet Name="Table_Shoes" EntityType="Model.Table_Shoes" />
           <EntitySet Name="Table_Users" EntityType="Model.Table_Users" />
+          <EntitySet Name="Table_VidNom" EntityType="Model.Table_VidNom" />
           <AssociationSet Name="FK_Table_Meaning_Table_Characteristic" Association="Model.FK_Table_Meaning_Table_Characteristic">
             <End Role="Table_Characteristic" EntitySet="Table_Characteristic" />
             <End Role="Table_Meaning" EntitySet="Table_Meaning" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_Clothes_Table_Gender" Association="Model.FK_Table_Clothes_Table_Gender">
-            <End Role="Table_Gender" EntitySet="Table_Gender" />
-            <End Role="Table_Clothes" EntitySet="Table_Clothes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_Meaning_Table_Clothes" Association="Model.FK_Table_Meaning_Table_Clothes">
-            <End Role="Table_Clothes" EntitySet="Table_Clothes" />
-            <End Role="Table_Meaning" EntitySet="Table_Meaning" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_Products_Table_Products" Association="Model.FK_Table_Products_Table_Products">
-            <End Role="Table_Clothes" EntitySet="Table_Clothes" />
-            <End Role="Table_Products" EntitySet="Table_Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Table_Purchase_Table_Customer" Association="Model.FK_Table_Purchase_Table_Customer">
             <End Role="Table_Customer" EntitySet="Table_Customer" />
             <End Role="Table_Purchase" EntitySet="Table_Purchase" />
           </AssociationSet>
-          <AssociationSet Name="FK_Table_Shoes_Table_Gender" Association="Model.FK_Table_Shoes_Table_Gender">
+          <AssociationSet Name="FK_Table_Nomenclature_Table_Gender" Association="Model.FK_Table_Nomenclature_Table_Gender">
             <End Role="Table_Gender" EntitySet="Table_Gender" />
-            <End Role="Table_Shoes" EntitySet="Table_Shoes" />
+            <End Role="Table_Nomenclature" EntitySet="Table_Nomenclature" />
           </AssociationSet>
           <AssociationSet Name="FK_Table_Users_Table_Gender" Association="Model.FK_Table_Users_Table_Gender">
             <End Role="Table_Gender" EntitySet="Table_Gender" />
             <End Role="Table_Users" EntitySet="Table_Users" />
           </AssociationSet>
-          <AssociationSet Name="FK_Table_Meaning_Table_Shoes" Association="Model.FK_Table_Meaning_Table_Shoes">
-            <End Role="Table_Shoes" EntitySet="Table_Shoes" />
+          <AssociationSet Name="FK_Table_Meaning_Table_Nomenclature" Association="Model.FK_Table_Meaning_Table_Nomenclature">
+            <End Role="Table_Nomenclature" EntitySet="Table_Nomenclature" />
             <End Role="Table_Meaning" EntitySet="Table_Meaning" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Nomenclature_Table_VidNom" Association="Model.FK_Table_Nomenclature_Table_VidNom">
+            <End Role="Table_VidNom" EntitySet="Table_VidNom" />
+            <End Role="Table_Nomenclature" EntitySet="Table_Nomenclature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Products_Table_Nomenclature" Association="Model.FK_Table_Products_Table_Nomenclature">
+            <End Role="Table_Nomenclature" EntitySet="Table_Nomenclature" />
+            <End Role="Table_Products" EntitySet="Table_Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Table_Phot_Table_Users" Association="Model.FK_Table_Phot_Table_Users">
             <End Role="Table_Users" EntitySet="Table_Users" />
             <End Role="Table_Phot" EntitySet="Table_Phot" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_Products_Table_Shoes" Association="Model.FK_Table_Products_Table_Shoes">
-            <End Role="Table_Shoes" EntitySet="Table_Shoes" />
-            <End Role="Table_Products" EntitySet="Table_Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Table_Purchase_Table_Products1" Association="Model.FK_Table_Purchase_Table_Products1">
             <End Role="Table_Products" EntitySet="Table_Products" />
@@ -387,20 +344,6 @@
           <Property Name="Characteristic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Table_Meaning" Relationship="Model.FK_Table_Meaning_Table_Characteristic" FromRole="Table_Characteristic" ToRole="Table_Meaning" />
         </EntityType>
-        <EntityType Name="Table_Clothes">
-          <Key>
-            <PropertyRef Name="IdClothes" />
-          </Key>
-          <Property Name="IdClothes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameClothes" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PriceClothes" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="ImageClothes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IdGenderClothes" Type="Int32" Nullable="false" />
-          <Property Name="IdMeaningClothes" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Table_Gender" Relationship="Model.FK_Table_Clothes_Table_Gender" FromRole="Table_Clothes" ToRole="Table_Gender" />
-          <NavigationProperty Name="Table_Meaning" Relationship="Model.FK_Table_Meaning_Table_Clothes" FromRole="Table_Clothes" ToRole="Table_Meaning" />
-          <NavigationProperty Name="Table_Products" Relationship="Model.FK_Table_Products_Table_Products" FromRole="Table_Clothes" ToRole="Table_Products" />
-        </EntityType>
         <EntityType Name="Table_Customer">
           <Key>
             <PropertyRef Name="IdCustomer" />
@@ -416,8 +359,7 @@
           </Key>
           <Property Name="IdGender" Type="Int32" Nullable="false" />
           <Property Name="gender" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Table_Clothes" Relationship="Model.FK_Table_Clothes_Table_Gender" FromRole="Table_Gender" ToRole="Table_Clothes" />
-          <NavigationProperty Name="Table_Shoes" Relationship="Model.FK_Table_Shoes_Table_Gender" FromRole="Table_Gender" ToRole="Table_Shoes" />
+          <NavigationProperty Name="Table_Nomenclature" Relationship="Model.FK_Table_Nomenclature_Table_Gender" FromRole="Table_Gender" ToRole="Table_Nomenclature" />
           <NavigationProperty Name="Table_Users" Relationship="Model.FK_Table_Users_Table_Gender" FromRole="Table_Gender" ToRole="Table_Users" />
         </EntityType>
         <EntityType Name="Table_Meaning">
@@ -425,13 +367,27 @@
             <PropertyRef Name="IdMeaning" />
           </Key>
           <Property Name="IdMeaning" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdClothes" Type="Int32" />
-          <Property Name="IdShoes" Type="Int32" />
+          <Property Name="IdNom" Type="Int32" />
           <Property Name="IdCharacteristic" Type="Int32" Nullable="false" />
           <Property Name="Meaning" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Table_Characteristic" Relationship="Model.FK_Table_Meaning_Table_Characteristic" FromRole="Table_Meaning" ToRole="Table_Characteristic" />
-          <NavigationProperty Name="Table_Clothes" Relationship="Model.FK_Table_Meaning_Table_Clothes" FromRole="Table_Meaning" ToRole="Table_Clothes" />
-          <NavigationProperty Name="Table_Shoes" Relationship="Model.FK_Table_Meaning_Table_Shoes" FromRole="Table_Meaning" ToRole="Table_Shoes" />
+          <NavigationProperty Name="Table_Nomenclature" Relationship="Model.FK_Table_Meaning_Table_Nomenclature" FromRole="Table_Meaning" ToRole="Table_Nomenclature" />
+        </EntityType>
+        <EntityType Name="Table_Nomenclature">
+          <Key>
+            <PropertyRef Name="idNomenclature" />
+          </Key>
+          <Property Name="idNomenclature" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameNom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PriceNom" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ImageNom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idGenderNom" Type="Int32" Nullable="false" />
+          <Property Name="idMeaningNom" Type="Int32" Nullable="false" />
+          <Property Name="vidNom" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Table_Gender" Relationship="Model.FK_Table_Nomenclature_Table_Gender" FromRole="Table_Nomenclature" ToRole="Table_Gender" />
+          <NavigationProperty Name="Table_Meaning" Relationship="Model.FK_Table_Meaning_Table_Nomenclature" FromRole="Table_Nomenclature" ToRole="Table_Meaning" />
+          <NavigationProperty Name="Table_VidNom" Relationship="Model.FK_Table_Nomenclature_Table_VidNom" FromRole="Table_Nomenclature" ToRole="Table_VidNom" />
+          <NavigationProperty Name="Table_Products" Relationship="Model.FK_Table_Products_Table_Nomenclature" FromRole="Table_Nomenclature" ToRole="Table_Products" />
         </EntityType>
         <EntityType Name="Table_Phot">
           <Key>
@@ -449,11 +405,9 @@
           </Key>
           <Property Name="IdProducts" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdPurchase" Type="Int32" Nullable="false" />
-          <Property Name="IdClothes" Type="Int32" />
-          <Property Name="IdShoes" Type="Int32" />
+          <Property Name="IdNom" Type="Int32" />
           <Property Name="Amount" Type="Int32" />
-          <NavigationProperty Name="Table_Clothes" Relationship="Model.FK_Table_Products_Table_Products" FromRole="Table_Products" ToRole="Table_Clothes" />
-          <NavigationProperty Name="Table_Shoes" Relationship="Model.FK_Table_Products_Table_Shoes" FromRole="Table_Products" ToRole="Table_Shoes" />
+          <NavigationProperty Name="Table_Nomenclature" Relationship="Model.FK_Table_Products_Table_Nomenclature" FromRole="Table_Products" ToRole="Table_Nomenclature" />
           <NavigationProperty Name="Table_Purchase" Relationship="Model.FK_Table_Purchase_Table_Products1" FromRole="Table_Products" ToRole="Table_Purchase" />
         </EntityType>
         <EntityType Name="Table_Purchase">
@@ -476,20 +430,6 @@
           <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Table_Users" Relationship="Model.FK_Table_Users_Table_Role" FromRole="Table_Role" ToRole="Table_Users" />
         </EntityType>
-        <EntityType Name="Table_Shoes">
-          <Key>
-            <PropertyRef Name="IdShoes" />
-          </Key>
-          <Property Name="IdShoes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameShoes" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PriceShoes" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="ImageShoes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IdGenderShoes" Type="Int32" Nullable="false" />
-          <Property Name="IdMeaningShoes" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Table_Gender" Relationship="Model.FK_Table_Shoes_Table_Gender" FromRole="Table_Shoes" ToRole="Table_Gender" />
-          <NavigationProperty Name="Table_Meaning" Relationship="Model.FK_Table_Meaning_Table_Shoes" FromRole="Table_Shoes" ToRole="Table_Meaning" />
-          <NavigationProperty Name="Table_Products" Relationship="Model.FK_Table_Products_Table_Shoes" FromRole="Table_Shoes" ToRole="Table_Products" />
-        </EntityType>
         <EntityType Name="Table_Users">
           <Key>
             <PropertyRef Name="IdUsers" />
@@ -507,6 +447,14 @@
           <NavigationProperty Name="Table_Phot" Relationship="Model.FK_Table_Phot_Table_Users" FromRole="Table_Users" ToRole="Table_Phot" />
           <NavigationProperty Name="Table_Role" Relationship="Model.FK_Table_Users_Table_Role" FromRole="Table_Users" ToRole="Table_Role" />
         </EntityType>
+        <EntityType Name="Table_VidNom">
+          <Key>
+            <PropertyRef Name="idVidNom" />
+          </Key>
+          <Property Name="idVidNom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vidNom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Table_Nomenclature" Relationship="Model.FK_Table_Nomenclature_Table_VidNom" FromRole="Table_VidNom" ToRole="Table_Nomenclature" />
+        </EntityType>
         <Association Name="FK_Table_Meaning_Table_Characteristic">
           <End Type="Model.Table_Characteristic" Role="Table_Characteristic" Multiplicity="1" />
           <End Type="Model.Table_Meaning" Role="Table_Meaning" Multiplicity="*" />
@@ -516,42 +464,6 @@
             </Principal>
             <Dependent Role="Table_Meaning">
               <PropertyRef Name="IdCharacteristic" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_Clothes_Table_Gender">
-          <End Type="Model.Table_Gender" Role="Table_Gender" Multiplicity="1" />
-          <End Type="Model.Table_Clothes" Role="Table_Clothes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Table_Gender">
-              <PropertyRef Name="IdGender" />
-            </Principal>
-            <Dependent Role="Table_Clothes">
-              <PropertyRef Name="IdGenderClothes" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_Meaning_Table_Clothes">
-          <End Type="Model.Table_Clothes" Role="Table_Clothes" Multiplicity="0..1" />
-          <End Type="Model.Table_Meaning" Role="Table_Meaning" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Table_Clothes">
-              <PropertyRef Name="IdClothes" />
-            </Principal>
-            <Dependent Role="Table_Meaning">
-              <PropertyRef Name="IdClothes" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Table_Products_Table_Products">
-          <End Type="Model.Table_Clothes" Role="Table_Clothes" Multiplicity="0..1" />
-          <End Type="Model.Table_Products" Role="Table_Products" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Table_Clothes">
-              <PropertyRef Name="IdClothes" />
-            </Principal>
-            <Dependent Role="Table_Products">
-              <PropertyRef Name="IdClothes" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -567,15 +479,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Table_Shoes_Table_Gender">
+        <Association Name="FK_Table_Nomenclature_Table_Gender">
           <End Type="Model.Table_Gender" Role="Table_Gender" Multiplicity="1" />
-          <End Type="Model.Table_Shoes" Role="Table_Shoes" Multiplicity="*" />
+          <End Type="Model.Table_Nomenclature" Role="Table_Nomenclature" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Table_Gender">
               <PropertyRef Name="IdGender" />
             </Principal>
-            <Dependent Role="Table_Shoes">
-              <PropertyRef Name="IdGenderShoes" />
+            <Dependent Role="Table_Nomenclature">
+              <PropertyRef Name="idGenderNom" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -591,15 +503,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Table_Meaning_Table_Shoes">
-          <End Type="Model.Table_Shoes" Role="Table_Shoes" Multiplicity="0..1" />
+        <Association Name="FK_Table_Meaning_Table_Nomenclature">
+          <End Type="Model.Table_Nomenclature" Role="Table_Nomenclature" Multiplicity="0..1" />
           <End Type="Model.Table_Meaning" Role="Table_Meaning" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Table_Shoes">
-              <PropertyRef Name="IdShoes" />
+            <Principal Role="Table_Nomenclature">
+              <PropertyRef Name="idNomenclature" />
             </Principal>
             <Dependent Role="Table_Meaning">
-              <PropertyRef Name="IdShoes" />
+              <PropertyRef Name="IdNom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Nomenclature_Table_VidNom">
+          <End Type="Model.Table_VidNom" Role="Table_VidNom" Multiplicity="1" />
+          <End Type="Model.Table_Nomenclature" Role="Table_Nomenclature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_VidNom">
+              <PropertyRef Name="idVidNom" />
+            </Principal>
+            <Dependent Role="Table_Nomenclature">
+              <PropertyRef Name="vidNom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Products_Table_Nomenclature">
+          <End Type="Model.Table_Nomenclature" Role="Table_Nomenclature" Multiplicity="0..1" />
+          <End Type="Model.Table_Products" Role="Table_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Nomenclature">
+              <PropertyRef Name="idNomenclature" />
+            </Principal>
+            <Dependent Role="Table_Products">
+              <PropertyRef Name="IdNom" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -615,20 +551,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Table_Products_Table_Shoes">
-          <End Type="Model.Table_Shoes" Role="Table_Shoes" Multiplicity="0..1" />
-          <End Type="Model.Table_Products" Role="Table_Products" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Table_Shoes">
-              <PropertyRef Name="IdShoes" />
-            </Principal>
-            <Dependent Role="Table_Products">
-              <PropertyRef Name="IdShoes" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Table_Purchase_Table_Products1">
-          <End Type="Model.Table_Products" Role="Table_Products" Multiplicity="1" />
+          <End Type="Model.Table_Products" Role="Table_Products" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.Table_Purchase" Role="Table_Purchase" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Table_Products">
@@ -665,18 +591,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Table_Clothes">
-            <EntityTypeMapping TypeName="Model.Table_Clothes">
-              <MappingFragment StoreEntitySet="Table_Clothes">
-                <ScalarProperty Name="IdMeaningClothes" ColumnName="IdMeaningClothes" />
-                <ScalarProperty Name="IdGenderClothes" ColumnName="IdGenderClothes" />
-                <ScalarProperty Name="ImageClothes" ColumnName="ImageClothes" />
-                <ScalarProperty Name="PriceClothes" ColumnName="PriceClothes" />
-                <ScalarProperty Name="NameClothes" ColumnName="NameClothes" />
-                <ScalarProperty Name="IdClothes" ColumnName="IdClothes" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Table_Customer">
             <EntityTypeMapping TypeName="Model.Table_Customer">
               <MappingFragment StoreEntitySet="Table_Customer">
@@ -699,9 +613,21 @@
               <MappingFragment StoreEntitySet="Table_Meaning">
                 <ScalarProperty Name="Meaning" ColumnName="Meaning" />
                 <ScalarProperty Name="IdCharacteristic" ColumnName="IdCharacteristic" />
-                <ScalarProperty Name="IdShoes" ColumnName="IdShoes" />
-                <ScalarProperty Name="IdClothes" ColumnName="IdClothes" />
+                <ScalarProperty Name="IdNom" ColumnName="IdNom" />
                 <ScalarProperty Name="IdMeaning" ColumnName="IdMeaning" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Nomenclature">
+            <EntityTypeMapping TypeName="Model.Table_Nomenclature">
+              <MappingFragment StoreEntitySet="Table_Nomenclature">
+                <ScalarProperty Name="vidNom" ColumnName="vidNom" />
+                <ScalarProperty Name="idMeaningNom" ColumnName="idMeaningNom" />
+                <ScalarProperty Name="idGenderNom" ColumnName="idGenderNom" />
+                <ScalarProperty Name="ImageNom" ColumnName="ImageNom" />
+                <ScalarProperty Name="PriceNom" ColumnName="PriceNom" />
+                <ScalarProperty Name="NameNom" ColumnName="NameNom" />
+                <ScalarProperty Name="idNomenclature" ColumnName="idNomenclature" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -719,8 +645,7 @@
             <EntityTypeMapping TypeName="Model.Table_Products">
               <MappingFragment StoreEntitySet="Table_Products">
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="IdShoes" ColumnName="IdShoes" />
-                <ScalarProperty Name="IdClothes" ColumnName="IdClothes" />
+                <ScalarProperty Name="IdNom" ColumnName="IdNom" />
                 <ScalarProperty Name="IdPurchase" ColumnName="IdPurchase" />
                 <ScalarProperty Name="IdProducts" ColumnName="IdProducts" />
               </MappingFragment>
@@ -745,18 +670,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Table_Shoes">
-            <EntityTypeMapping TypeName="Model.Table_Shoes">
-              <MappingFragment StoreEntitySet="Table_Shoes">
-                <ScalarProperty Name="IdMeaningShoes" ColumnName="IdMeaningShoes" />
-                <ScalarProperty Name="IdGenderShoes" ColumnName="IdGenderShoes" />
-                <ScalarProperty Name="ImageShoes" ColumnName="ImageShoes" />
-                <ScalarProperty Name="PriceShoes" ColumnName="PriceShoes" />
-                <ScalarProperty Name="NameShoes" ColumnName="NameShoes" />
-                <ScalarProperty Name="IdShoes" ColumnName="IdShoes" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Table_Users">
             <EntityTypeMapping TypeName="Model.Table_Users">
               <MappingFragment StoreEntitySet="Table_Users">
@@ -769,6 +682,14 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
                 <ScalarProperty Name="IdUsers" ColumnName="IdUsers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_VidNom">
+            <EntityTypeMapping TypeName="Model.Table_VidNom">
+              <MappingFragment StoreEntitySet="Table_VidNom">
+                <ScalarProperty Name="vidNom" ColumnName="vidNom" />
+                <ScalarProperty Name="idVidNom" ColumnName="idVidNom" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
