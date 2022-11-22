@@ -14,6 +14,12 @@ namespace Bykova41p_Pr6
     
     public partial class Table_Users
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Table_Users()
+        {
+            this.Table_Phot = new HashSet<Table_Phot>();
+        }
+    
         public int IdUsers { get; set; }
         public string Surname { get; set; }
         public string Name { get; set; }
@@ -25,6 +31,8 @@ namespace Bykova41p_Pr6
         public int IdRole { get; set; }
     
         public virtual Table_Gender Table_Gender { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Table_Phot> Table_Phot { get; set; }
         public virtual Table_Role Table_Role { get; set; }
     }
 }

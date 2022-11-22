@@ -48,6 +48,15 @@
           <Property Name="IdCharacteristic" Type="int" Nullable="false" />
           <Property Name="Meaning" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Table_Phot">
+          <Key>
+            <PropertyRef Name="idPhot" />
+          </Key>
+          <Property Name="idPhot" Type="int" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="path" Type="nvarchar(max)" />
+          <Property Name="Binpath" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Table_Products">
           <Key>
             <PropertyRef Name="IdProducts" />
@@ -148,6 +157,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Table_Phot_Table_Users">
+          <End Role="Table_Users" Type="Self.Table_Users" Multiplicity="1" />
+          <End Role="Table_Phot" Type="Self.Table_Phot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Users">
+              <PropertyRef Name="IdUsers" />
+            </Principal>
+            <Dependent Role="Table_Phot">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Table_Products_Table_Products">
           <End Role="Table_Clothes" Type="Self.Table_Clothes" Multiplicity="0..1" />
           <End Role="Table_Products" Type="Self.Table_Products" Multiplicity="*" />
@@ -184,10 +205,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Table_Purchase_Table_Products">
-          <End Role="Table_Products" Type="Self.Table_Products" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK_Table_Purchase_Table_Products1">
+          <End Role="Table_Products" Type="Self.Table_Products" Multiplicity="1" />
           <End Role="Table_Purchase" Type="Self.Table_Purchase" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Table_Products">
@@ -240,6 +259,7 @@
           <EntitySet Name="Table_Customer" EntityType="Self.Table_Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Gender" EntityType="Self.Table_Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Meaning" EntityType="Self.Table_Meaning" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Phot" EntityType="Self.Table_Phot" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Products" EntityType="Self.Table_Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Purchase" EntityType="Self.Table_Purchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Role" EntityType="Self.Table_Role" Schema="dbo" store:Type="Tables" />
@@ -261,6 +281,10 @@
             <End Role="Table_Shoes" EntitySet="Table_Shoes" />
             <End Role="Table_Meaning" EntitySet="Table_Meaning" />
           </AssociationSet>
+          <AssociationSet Name="FK_Table_Phot_Table_Users" Association="Self.FK_Table_Phot_Table_Users">
+            <End Role="Table_Users" EntitySet="Table_Users" />
+            <End Role="Table_Phot" EntitySet="Table_Phot" />
+          </AssociationSet>
           <AssociationSet Name="FK_Table_Products_Table_Products" Association="Self.FK_Table_Products_Table_Products">
             <End Role="Table_Clothes" EntitySet="Table_Clothes" />
             <End Role="Table_Products" EntitySet="Table_Products" />
@@ -273,7 +297,7 @@
             <End Role="Table_Customer" EntitySet="Table_Customer" />
             <End Role="Table_Purchase" EntitySet="Table_Purchase" />
           </AssociationSet>
-          <AssociationSet Name="FK_Table_Purchase_Table_Products" Association="Self.FK_Table_Purchase_Table_Products">
+          <AssociationSet Name="FK_Table_Purchase_Table_Products1" Association="Self.FK_Table_Purchase_Table_Products1">
             <End Role="Table_Products" EntitySet="Table_Products" />
             <End Role="Table_Purchase" EntitySet="Table_Purchase" />
           </AssociationSet>
@@ -300,6 +324,7 @@
           <EntitySet Name="Table_Customer" EntityType="Model.Table_Customer" />
           <EntitySet Name="Table_Gender" EntityType="Model.Table_Gender" />
           <EntitySet Name="Table_Meaning" EntityType="Model.Table_Meaning" />
+          <EntitySet Name="Table_Phot" EntityType="Model.Table_Phot" />
           <EntitySet Name="Table_Products" EntityType="Model.Table_Products" />
           <EntitySet Name="Table_Purchase" EntityType="Model.Table_Purchase" />
           <EntitySet Name="Table_Role" EntityType="Model.Table_Role" />
@@ -337,11 +362,15 @@
             <End Role="Table_Shoes" EntitySet="Table_Shoes" />
             <End Role="Table_Meaning" EntitySet="Table_Meaning" />
           </AssociationSet>
+          <AssociationSet Name="FK_Table_Phot_Table_Users" Association="Model.FK_Table_Phot_Table_Users">
+            <End Role="Table_Users" EntitySet="Table_Users" />
+            <End Role="Table_Phot" EntitySet="Table_Phot" />
+          </AssociationSet>
           <AssociationSet Name="FK_Table_Products_Table_Shoes" Association="Model.FK_Table_Products_Table_Shoes">
             <End Role="Table_Shoes" EntitySet="Table_Shoes" />
             <End Role="Table_Products" EntitySet="Table_Products" />
           </AssociationSet>
-          <AssociationSet Name="FK_Table_Purchase_Table_Products" Association="Model.FK_Table_Purchase_Table_Products">
+          <AssociationSet Name="FK_Table_Purchase_Table_Products1" Association="Model.FK_Table_Purchase_Table_Products1">
             <End Role="Table_Products" EntitySet="Table_Products" />
             <End Role="Table_Purchase" EntitySet="Table_Purchase" />
           </AssociationSet>
@@ -404,6 +433,16 @@
           <NavigationProperty Name="Table_Clothes" Relationship="Model.FK_Table_Meaning_Table_Clothes" FromRole="Table_Meaning" ToRole="Table_Clothes" />
           <NavigationProperty Name="Table_Shoes" Relationship="Model.FK_Table_Meaning_Table_Shoes" FromRole="Table_Meaning" ToRole="Table_Shoes" />
         </EntityType>
+        <EntityType Name="Table_Phot">
+          <Key>
+            <PropertyRef Name="idPhot" />
+          </Key>
+          <Property Name="idPhot" Type="Int32" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Binpath" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Table_Users" Relationship="Model.FK_Table_Phot_Table_Users" FromRole="Table_Phot" ToRole="Table_Users" />
+        </EntityType>
         <EntityType Name="Table_Products">
           <Key>
             <PropertyRef Name="IdProducts" />
@@ -415,7 +454,7 @@
           <Property Name="Amount" Type="Int32" />
           <NavigationProperty Name="Table_Clothes" Relationship="Model.FK_Table_Products_Table_Products" FromRole="Table_Products" ToRole="Table_Clothes" />
           <NavigationProperty Name="Table_Shoes" Relationship="Model.FK_Table_Products_Table_Shoes" FromRole="Table_Products" ToRole="Table_Shoes" />
-          <NavigationProperty Name="Table_Purchase" Relationship="Model.FK_Table_Purchase_Table_Products" FromRole="Table_Products" ToRole="Table_Purchase" />
+          <NavigationProperty Name="Table_Purchase" Relationship="Model.FK_Table_Purchase_Table_Products1" FromRole="Table_Products" ToRole="Table_Purchase" />
         </EntityType>
         <EntityType Name="Table_Purchase">
           <Key>
@@ -427,7 +466,7 @@
           <Property Name="DatePurchase" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TotalPurchase" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="Table_Customer" Relationship="Model.FK_Table_Purchase_Table_Customer" FromRole="Table_Purchase" ToRole="Table_Customer" />
-          <NavigationProperty Name="Table_Products" Relationship="Model.FK_Table_Purchase_Table_Products" FromRole="Table_Purchase" ToRole="Table_Products" />
+          <NavigationProperty Name="Table_Products" Relationship="Model.FK_Table_Purchase_Table_Products1" FromRole="Table_Purchase" ToRole="Table_Products" />
         </EntityType>
         <EntityType Name="Table_Role">
           <Key>
@@ -465,6 +504,7 @@
           <Property Name="Pssword" Type="Int32" Nullable="false" />
           <Property Name="IdRole" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Table_Gender" Relationship="Model.FK_Table_Users_Table_Gender" FromRole="Table_Users" ToRole="Table_Gender" />
+          <NavigationProperty Name="Table_Phot" Relationship="Model.FK_Table_Phot_Table_Users" FromRole="Table_Users" ToRole="Table_Phot" />
           <NavigationProperty Name="Table_Role" Relationship="Model.FK_Table_Users_Table_Role" FromRole="Table_Users" ToRole="Table_Role" />
         </EntityType>
         <Association Name="FK_Table_Meaning_Table_Characteristic">
@@ -563,6 +603,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Table_Phot_Table_Users">
+          <End Type="Model.Table_Users" Role="Table_Users" Multiplicity="1" />
+          <End Type="Model.Table_Phot" Role="Table_Phot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Users">
+              <PropertyRef Name="IdUsers" />
+            </Principal>
+            <Dependent Role="Table_Phot">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Table_Products_Table_Shoes">
           <End Type="Model.Table_Shoes" Role="Table_Shoes" Multiplicity="0..1" />
           <End Type="Model.Table_Products" Role="Table_Products" Multiplicity="*" />
@@ -575,10 +627,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Table_Purchase_Table_Products">
-          <End Type="Model.Table_Products" Role="Table_Products" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK_Table_Purchase_Table_Products1">
+          <End Type="Model.Table_Products" Role="Table_Products" Multiplicity="1" />
           <End Type="Model.Table_Purchase" Role="Table_Purchase" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Table_Products">
@@ -652,6 +702,16 @@
                 <ScalarProperty Name="IdShoes" ColumnName="IdShoes" />
                 <ScalarProperty Name="IdClothes" ColumnName="IdClothes" />
                 <ScalarProperty Name="IdMeaning" ColumnName="IdMeaning" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Phot">
+            <EntityTypeMapping TypeName="Model.Table_Phot">
+              <MappingFragment StoreEntitySet="Table_Phot">
+                <ScalarProperty Name="Binpath" ColumnName="Binpath" />
+                <ScalarProperty Name="path" ColumnName="path" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="idPhot" ColumnName="idPhot" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

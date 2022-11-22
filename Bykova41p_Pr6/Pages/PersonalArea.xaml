@@ -13,33 +13,50 @@
             <RowDefinition Height="20"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         <Grid Grid.Row="0" >
             <Button Name="btnBack" Width="190" Height="20" HorizontalAlignment="Left" Margin="36,0,0,0" Content="Назад к меню администратора" Click="btnBack_Click" HorizontalContentAlignment="Center" Visibility="Collapsed"/>
         </Grid>
 
-        <Grid Grid.Row="1" >
+        <Grid Grid.Row="1" Grid.Column="0">
 
-        <StackPanel>
-            <Image Height="160" Width="150" Name="imUser" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5" Source="\Res\def.jpg"/>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                <TextBlock Margin="0,0,5,0">Фамилия пользователя:</TextBlock>
-                <TextBlock Name="tbSurname"></TextBlock>
+            <StackPanel>
+                <Image Height="160" Width="150" Name="imUser" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5" Source="\Res\def.jpg"/>
+                <Button Width="155" HorizontalAlignment="Left" x:Name="addph" Click="addph_Click" Margin="15,2,2,15">Добавить фото</Button>
+                <Button Width="155" HorizontalAlignment="Left" x:Name="addmoreph" Click="addmoreph_Click"  Margin="15,2,2,15">Добавить несколько фото</Button>
+                <Button Width="155" HorizontalAlignment="Left" x:Name="showgallery" Click="showgallery_Click"   Margin="15,2,2,15">Открыть галерею фото</Button>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Margin="0,0,5,0">Фамилия пользователя:</TextBlock>
+                    <TextBlock Name="tbSurname"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Margin="0,0,5,0">Имя пользователя:</TextBlock>
+                    <TextBlock Name="tbName"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Margin="0,0,5,0">Отчество пользователя:</TextBlock>
+                    <TextBlock Name="tbPatr"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Margin="0,0,5,0">Дата рождения пользователя:</TextBlock>
+                    <TextBlock Name="DPBirth"></TextBlock>
+                </StackPanel>
+                <Button Width="155" HorizontalAlignment="Left" x:Name="redaUserData" Click="redaUserData_Click" Margin="5">Изменить личные данные</Button>
+                <Button Width="155" HorizontalAlignment="Left" x:Name="redlogpar" Click="redlogpar_Click" Margin="5">Изменить логин и пароль</Button>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                <TextBlock Margin="0,0,5,0">Имя пользователя:</TextBlock>
-                <TextBlock Name="tbName"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <StackPanel Name="spgal" Visibility="Visible">
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="Back" Click="Back_Click" IsEnabled="False">Назад</Button>
+                    <Image Width="200" Height="200" Name="imgGallery"></Image>
+                    <Button Name="Next" Click="Next_Click">Вперед</Button>
+                </StackPanel>
+                <Button Width="175" HorizontalAlignment="Left" Margin="50,10,0,0" Name="btbackph" Click="btbackph_Click">Изменить фото на выбранное</Button>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                <TextBlock Margin="0,0,5,0">Отчество пользователя:</TextBlock>
-                <TextBlock Name="tbPatr"></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                <TextBlock Margin="0,0,5,0">Дата рождения пользователя:</TextBlock>
-                <TextBlock Name="DPBirth"></TextBlock>
-            </StackPanel>
-            <Button x:Name="redaUserData" Click="redaUserData_Click" Margin="5">Изменить личные данные</Button>
-            <Button x:Name="redlogpar" Click="redlogpar_Click" Margin="5">Изменить логин и пароль</Button>
-        </StackPanel>
         </Grid>
     </Grid>
 </Page>
