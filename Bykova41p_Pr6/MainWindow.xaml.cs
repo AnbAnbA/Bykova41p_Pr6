@@ -42,5 +42,10 @@ namespace Bykova41p_Pr6
         {
             FrameC.frameM.Navigate(new Pages.MainM());
         }
+
+        private void BTRec_Click(object sender, RoutedEventArgs e)
+        {
+            FrameC.frameM.Navigate(new Pages.AD());
+        }
     }
 }

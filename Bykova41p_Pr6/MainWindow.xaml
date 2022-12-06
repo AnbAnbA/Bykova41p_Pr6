@@ -20,6 +20,7 @@
         <Grid Grid.Row="0" Grid.Column="1">
             <StackPanel>
                 <TextBlock Text="Магазин одежды и обуви" HorizontalAlignment="Center"/>
+                <Button x:Name="BTRec" Margin="3,25,0,0" Click="BTRec_Click" Content="Реклама" />
             </StackPanel>
 
         </Grid>
@@ -37,7 +38,7 @@
         </Grid>
         <Grid Grid.Row="1"  Grid.ColumnSpan="3">
             <StackPanel>
-                <Frame x:Name="frameM" NavigationUIVisibility="Hidden" Height="375" Width="791"/>
+                <Frame x:Name="frameM" NavigationUIVisibility="Hidden" Height="450" Width="791"/>
             </StackPanel>
         </Grid>
 

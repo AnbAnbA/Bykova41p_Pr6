@@ -80,6 +80,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AD.xaml.cs">
+      <DependentUpon>AD.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AddP.xaml.cs">
       <DependentUpon>AddP.xaml</DependentUpon>
     </Compile>
@@ -150,6 +153,10 @@
     <Compile Include="Table_VidNom.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="Pages\AD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AddP.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -1,0 +1,25 @@
+﻿<Page x:Class="Bykova41p_Pr6.Pages.AD"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bykova41p_Pr6.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="520" d:DesignWidth="800"
+      Title="AD">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" >
+            <Button Name="btnBack" Width="70" Height="20" HorizontalAlignment="Left" Margin="36,0,0,0" Content="На главную" Click="btnBack_Click" HorizontalContentAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Label x:Name="Lb" HorizontalAlignment="Center" FontSize="20">Успей нажать на кнопку и получить скидку!</Label>
+            <Label Margin="20" x:Name="Lbuy" HorizontalAlignment="Center" FontSize="20">Лучший магазин одежды и обуви!</Label>
+            <Button Name="btnsale" Width="50" Height="20" HorizontalAlignment="Left" Margin="237,419,0,51" Click="btnsale_Click" Content="SALE!!!" HorizontalContentAlignment="Center" Visibility="Visible"/>
+        </Grid>
+    </Grid>
+</Page>
