@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Button Name="btnBack" Width="70" Height="20" HorizontalAlignment="Left" Margin="36,0,0,0" Content="Назад" Click="btnBack_Click" HorizontalContentAlignment="Center"/>
-            <Button Name="btncreate" Width="70" Height="20" HorizontalAlignment="Left" Margin="140,0,0,0" Content="Добавить" Click="btncreate_Click" HorizontalContentAlignment="Center"/>
+            <Button Name="btncreate" Width="70" Height="20" HorizontalAlignment="Left" Margin="140,0,0,0" Content="Сохранить" Click="btncreate_Click" HorizontalContentAlignment="Center"/>
         </Grid>
 
         <Grid Grid.Row="1">

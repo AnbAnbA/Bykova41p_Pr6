@@ -58,12 +58,12 @@ namespace Bykova41p_Pr6.Pages
             btnsale.BeginAnimation(HeightProperty, HA);
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Interval = TimeSpan.FromSeconds(5);
             timer.Tick += tim;
             timer.Start();
 
         }
-        private void tim() 
+        private void tim(object sender, EventArgs e) 
         {
             btnsale.Visibility = Visibility.Collapsed;
         }

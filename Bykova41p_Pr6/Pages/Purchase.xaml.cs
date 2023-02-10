@@ -20,11 +20,25 @@ namespace Bykova41p_Pr6.Pages
     /// </summary>
     public partial class Purchase : Page
     {
+        PartialPurchasee pc = new PartialPurchasee();
         private Table_Users _user;
+        List<Table_Purchase> listFilter = new List<Table_Purchase>();
         public Purchase(Table_Users User)
         {
             InitializeComponent();
             LVPur.ItemsSource = Base.ES.Table_Purchase.ToList();
+            _user = User;
+
+            List<Table_Customer> customers = Base.ES.Table_Customer.ToList();
+            cmbFilt.Items.Add("Любые пользователи");
+            for (int i = 0; i < customers.Count; i++)
+            {
+                cmbFilt.Items.Add(customers[i].NameCustomer);
+            }
+            cmbFilt.SelectedIndex = 0;
+            cmbSort.SelectedIndex = 0;
+            pc.CountPage = Base.ES.Table_Purchase.ToList().Count;
+            DataContext = pc;
         }
 
 
@@ -132,6 +146,129 @@ namespace Bykova41p_Pr6.Pages
         private void btncreate_Click(object sender, RoutedEventArgs e)
         {
             FrameC.frameM.Navigate(new AddP());
+        }
+
+        private void txtPageCount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                pc.CountPage = Convert.ToInt32(txtPageCount.Text); // если в текстовом поле есnь значение, присваиваем его свойству объекта, которое хранит количество записей на странице
+            }
+            catch
+            {
+                pc.CountPage = 4; // если в текстовом поле значения нет, присваиваем свойству объекта, которое хранит количество записей на странице количество элементов в списке
+            }
+            pc.Countlist = listFilter.Count;  // присваиваем новое значение свойству, которое в объекте отвечает за общее количество записей
+            LVPur.ItemsSource = listFilter.Skip(0).Take(pc.CountPage).ToList();  // отображаем первые записи в том количестве, которое равно CountPage
+            pc.CurrentPage = 1; // текущая страница - это страница 1
+        }
+
+        private void GoPage_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            TextBlock tb = (TextBlock)sender;
+
+            switch (tb.Uid)  // определяем, куда конкретно было сделано нажатие
+            {
+                case "prev":
+                    pc.CurrentPage--;
+                    break;
+                case "next":
+                    pc.CurrentPage++;
+                    break;
+                case "firstPage":
+                    pc.CurrentPage = 1;
+                    break;
+                case "lastPage":
+                    pc.CurrentPage = pc.CountPages;
+                    break;
+                default:
+                    pc.CurrentPage = Convert.ToInt32(tb.Text);
+                    break;
+            }
+            LVPur.ItemsSource = listFilter.Skip(pc.CurrentPage * pc.CountPage - pc.CountPage).Take(pc.CountPage).ToList();
+        }
+
+        private void cmbFilt_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Filter();
+        }
+
+        private void tbFilterT_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Filter();
+        }
+
+        private void cbKol0_Checked(object sender, RoutedEventArgs e)
+        {
+            Filter();
+        }
+
+        
+        void Filter()
+        {
+            List<Table_Purchase> list1 = Base.ES.Table_Purchase.ToList();
+            string provider = cmbFilt.SelectedValue.ToString();
+            int index = cmbFilt.SelectedIndex;
+            List<Table_Customer> customers = Base.ES.Table_Customer.Where(z => z.NameCustomer == provider).ToList();
+            if (index != 0)
+            {
+                listFilter = new List<Table_Purchase>();
+                foreach (Table_Customer tp in customers)
+                {
+                    foreach (Table_Purchase tovar in list1)
+                    {
+                        if (tovar.IdCustomer == tp.IdCustomer)
+                        {
+                            listFilter.Add(tovar);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                listFilter = Base.ES.Table_Purchase.ToList();
+            }
+
+            if (!string.IsNullOrWhiteSpace(tbFilterT.Text))
+            {
+                listFilter = listFilter.Where(z => z.Table_Customer.NameCustomer.ToLower().Contains(tbFilterT.Text.ToLower())).ToList();
+            }
+
+            if (cbKol0.IsChecked == true)
+            {
+                listFilter = listFilter.Where(z => z.Table_Products.Amount != 0).ToList();
+            }
+
+            switch (cmbSort.SelectedIndex)
+            {
+                case 1:
+                    listFilter.Sort((x, y) => x.Table_Customer.NameCustomer.CompareTo(y.Table_Customer.NameCustomer));
+                    break;
+                case 2:
+                    listFilter.Sort((x, y) => x.Table_Customer.NameCustomer.CompareTo(y.Table_Customer.NameCustomer));
+                    listFilter.Reverse();
+                    break;
+                case 3:
+                    listFilter.Sort((x, y) => Convert.ToDouble(x.TotalPurchase).CompareTo(y.TotalPurchase));
+                    break;
+                case 4:
+                    listFilter.Sort((x, y) => Convert.ToDouble(x.TotalPurchase).CompareTo(y.TotalPurchase));
+                    listFilter.Reverse();
+                    break;
+                case 5:
+                    listFilter.Sort((x, y) => Convert.ToInt32(x.Table_Products.Amount).CompareTo(y.Table_Products.Amount));
+                    break;
+                case 6:
+                    listFilter.Sort((x, y) => Convert.ToInt32(x.Table_Products.Amount).CompareTo(y.Table_Products.Amount));
+                    listFilter.Reverse();
+                    break;
+            }
+
+            LVPur.ItemsSource = listFilter;
+            if (listFilter.Count == 0)
+            {
+                MessageBox.Show("нет записей");
+            }
         }
     }
 }

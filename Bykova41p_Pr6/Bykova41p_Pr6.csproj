@@ -120,6 +120,7 @@
     </Compile>
     <Compile Include="PartialPurchase.cs" />
     <Compile Include="PartialClothes.cs" />
+    <Compile Include="PartialPurchasee.cs" />
     <Compile Include="Table_Characteristic.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -16,16 +16,30 @@
             <ColumnDefinition Width="565*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Grid.ColumnSpan="2">
             <Button Name="btnBack" Width="70" Height="20" HorizontalAlignment="Left" Margin="36,0,0,0" Content="Назад" Click="btnBack_Click" HorizontalContentAlignment="Center"/>
             <Button Name="btncreate" Width="70" Height="20" HorizontalAlignment="Left" Margin="140,0,0,0" Content="Добавить" Click="btncreate_Click" HorizontalContentAlignment="Center"/>
+            <ComboBox Name="cmbFilt" SelectionChanged="cmbFilt_SelectionChanged" FontSize="12" Width="290" Height="20" Margin="0,0,250,50"/>
+            <GroupBox Header="Введите название для поиска" Width="450" Height="40" Margin="160,20,0,0">
+                <TextBox Name="tbFilterT" TextChanged="tbFilterT_TextChanged" />
+            </GroupBox>
+            <CheckBox Name="cbKol0" Content="товары куплены" Checked="cbKol0_Checked" Unchecked="cbKol0_Checked" Width="125" Height="20" Margin="0,0,685,50"/>
+            <ComboBox Name="cmbSort" SelectionChanged="cmbFilt_SelectionChanged" Width="280" Height="20" FontSize="12" Margin="390,0,0,50">
+                <ComboBoxItem>Без сотрировки</ComboBoxItem>
+                <ComboBoxItem>По названию от А до Я</ComboBoxItem>
+                <ComboBoxItem>По названию от Я до А</ComboBoxItem>
+                <ComboBoxItem>По цене по возрастанию</ComboBoxItem>
+                <ComboBoxItem>По цене по убыванию</ComboBoxItem>
+                <ComboBoxItem>По количеству по возрастанию</ComboBoxItem>
+                <ComboBoxItem>По количеству по убыванию</ComboBoxItem>
+            </ComboBox>
         </Grid>
         <Grid Grid.Row="1" Grid.ColumnSpan="2">
             
-                <ListView Name="LVPur" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,10">
+                <ListView Name="LVPur" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,10" Height="250">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel HorizontalAlignment="Center"></WrapPanel>
@@ -65,7 +79,24 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-           
+
+            <StackPanel Orientation="Horizontal" Margin="0,315,0,0">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <GroupBox Header="Количество записей на 1 странице">
+                        <TextBox Name="txtPageCount" TextChanged="txtPageCount_TextChanged"/>
+                    </GroupBox>
+                    <TextBlock Name="txtFirstPage" Uid="firstPage" Text=" &lt;&lt; " MouseDown="GoPage_MouseDown"/>
+                    <TextBlock Name="txtPrev" Uid="prev" Text=" &lt; " MouseDown="GoPage_MouseDown"/>
+                    <TextBlock Name="txt1" Uid="1" Text="{Binding  Path = NPage[0]}" Visibility="{Binding Visible[0]}" FontWeight="{Binding Bold[0]}" MouseDown="GoPage_MouseDown"/>
+                    <TextBlock Name="txt2" Uid="2" Text="{Binding  Path = NPage[1]}" Visibility="{Binding Visible[1]}" FontWeight="{Binding Bold[1]}" MouseDown="GoPage_MouseDown"/>
+                    <TextBlock Name="txt3" Uid="3" Text="{Binding  Path = NPage[2]}" Visibility="{Binding Visible[2]}" FontWeight="{Binding Bold[2]}" MouseDown="GoPage_MouseDown"/>
+                    <TextBlock Name="txt4" Uid="4" Text="{Binding  Path = NPage[3]}" Visibility="{Binding Visible[3]}" FontWeight="{Binding Bold[3]}" MouseDown="GoPage_MouseDown"/>
+                    <TextBlock Name="txt5" Uid="5" Text="{Binding  Path = NPage[4]}" Visibility="{Binding Visible[4]}" FontWeight="{Binding Bold[4]}" MouseDown="GoPage_MouseDown"/>
+                    <TextBlock Name="txtNext" Uid="next" Text=" &gt;" MouseDown="GoPage_MouseDown"/>
+                    <TextBlock Name="txtLastPage" Uid="lastPage" Text=" &gt;&gt;" MouseDown="GoPage_MouseDown"/>
+                </StackPanel>
+            </StackPanel>
+
         </Grid>
     </Grid>
 </Page>

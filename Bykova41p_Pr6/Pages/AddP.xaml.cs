@@ -77,14 +77,21 @@ namespace Bykova41p_Pr6.Pages
                 {
                     Pur = new Table_Purchase();
                 }
+                
+
                 Table_Customer customer = new Table_Customer()
                 {
                     NameCustomer = tbName.Text,
                 };
+
+            if (flagUpdate == false)
+            {
                 Base.ES.Table_Customer.Add(customer);
+            }
+           
 
 
-                Pur.Table_Customer.IdCustomer = customer.IdCustomer;
+                Pur.IdCustomer = customer.IdCustomer;
                 Pur.DatePurchase = Convert.ToDateTime(dpDatePur.SelectedDate);
                
 
@@ -94,7 +101,7 @@ namespace Bykova41p_Pr6.Pages
                 }
                 // BaseClass.tBE.SaveChanges();
 
-                List<Table_Products> TP = Base.ES.Table_Products.Where(x =>x.IdProducts==Pur.Table_Products.IdProducts ).ToList();
+                List<Table_Products> TP = Base.ES.Table_Products.Where(x =>x.IdProducts==Pur.IdProducts ).ToList();
 
                   if (TP.Count > 0)
                   {
@@ -104,19 +111,21 @@ namespace Bykova41p_Pr6.Pages
                     }
                   }
 
-                   foreach (Table_Nomenclature t in lbClothes.SelectedItems)
-                   {
-                    Table_Products TPT = new Table_Products()  
-                    {
-                        IdProducts = Pur.IdProducts,
-                        IdNom = t.idNomenclature
-                    };
-                    Base.ES.Table_Products.Add(TPT);
-                   }
-                //  BaseClass.tBE.SaveChanges();
+            foreach (Table_Nomenclature t in lbClothes.SelectedItems)
+            {
+                Table_Products TPT = new Table_Products()
+                {
+                    IdProducts = Pur.IdProducts,
+                    IdNom = t.idNomenclature
+                    
+                };
+                Base.ES.Table_Products.Add(TPT);
+                //Pur.TotalPurchase = t.PriceNom * 1;
+            }
+            //BaseClass.tBE.SaveChanges();
+            
 
-              
-                Base.ES.SaveChanges();
+            Base.ES.SaveChanges();
                 MessageBox.Show("Информация добавлена");
             //}
             //catch
